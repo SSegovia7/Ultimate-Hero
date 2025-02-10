@@ -53,6 +53,8 @@ public class CharacterMovement : MonoBehaviour
         controls = input.GetInput();
         if (controls.JumpState && currentJumps < possibleJumps)
         {
+            PlayerStates.StateInstance.GetSetPlayerState = PlayerStates.StatesOfPlayer.Jumping;
+            Debug.Log("Jumping");
             jump = true;
         }
     }
@@ -121,7 +123,7 @@ public class CharacterMovement : MonoBehaviour
                 // --- horizontal position check
                 if (charRB.transform.localPosition != charDefaultRelPos)
                 {
-                    print("pos diff- local: " + charRB.transform.localPosition + "  --default: " + charDefaultRelPos);
+                    //print("pos diff- local: " + charRB.transform.localPosition + "  --default: " + charDefaultRelPos);
                     var charTransform = charRB.transform;
                     charTransform.localPosition = new Vector2(charDefaultRelPos.x,
                         charTransform.localPosition.y);
@@ -157,7 +159,9 @@ public class CharacterMovement : MonoBehaviour
             currentJumps = 0;
             // charRB.velocity = Vector2.zero;
             // baseRB.velocity = Vector2.zero;
+
             Debug.Log("setting velocity to zero");
+            PlayerStates.StateInstance.GetSetPlayerState = PlayerStates.StatesOfPlayer.Moving;
         }
     }
 
