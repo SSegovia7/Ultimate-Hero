@@ -15,19 +15,19 @@ public class PosingController : MonoBehaviour
     private SpriteRenderer _playerSprite;
     // not this below
     private Rigidbody2D _playerRigidbody;
-    private Rigidbody2D _playerOtherRigidbody;
-    private UnityEngine.Vector3 _zeroVector;
+    
+    private UnityEngine.Vector2 _zeroVector;
     [SerializeField] private float _injuredTimer;
     [SerializeField] private Sprite[] _sprites;
+    [SerializeField] private Rigidbody2D _playerOtherRigidbody;
 
     void Start()
     {
         _abilityCombo = new List<int>();
         _playerMovement = this.GetComponent<CharacterMovement>();
         _playerSprite = this.GetComponentInChildren<SpriteRenderer>();
-        _playerOtherRigidbody = this.GetComponentInChildren<Rigidbody2D>();
         _playerRigidbody = this.GetComponent<Rigidbody2D>();
-        _zeroVector = UnityEngine.Vector3.zero;
+        _zeroVector = UnityEngine.Vector2.zero;
 
     }
     // Update is called once per frame
@@ -54,8 +54,6 @@ public class PosingController : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.E))
         {
             PlayerIsPosing();
-            Debug.Log("hi");
-            CheckPlayerPoseInput?.Invoke(_abilityCombo);
         }
         // as long as the character is in their posing stances, this code can be reached
         if(PlayerStates.StateInstance.GetSetPlayerState == PlayerStates.StatesOfPlayer.Posing)
@@ -89,16 +87,11 @@ public class PosingController : MonoBehaviour
                 // change pos to down pose
                 _playerSprite.sprite = _sprites[4];
             }
-            
-
-            if(Input.GetKey(KeyCode.J))
-            {
-                PlayerStates.StateInstance.GetSetPlayerState = PlayerStates.StatesOfPlayer.Injured;
-            }
-
+    
 
             if(Input.GetKeyUp(KeyCode.E))
             {
+                CheckPlayerPoseInput?.Invoke(_abilityCombo);
                 PlayerStopPosing();
             }
         }

@@ -1545,6 +1545,7 @@ MonoBehaviour:
   - {fileID: -1188721927, guid: aa4c2aefac032a34f97dace726c00c7f, type: 3}
   - {fileID: 1549104137, guid: aa4c2aefac032a34f97dace726c00c7f, type: 3}
   - {fileID: -1647531295, guid: aa4c2aefac032a34f97dace726c00c7f, type: 3}
+  _playerOtherRigidbody: {fileID: 99502124}
 --- !u!114 &1592359216
 MonoBehaviour:
   m_ObjectHideFlags: 0
