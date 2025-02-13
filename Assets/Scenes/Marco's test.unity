@@ -1538,9 +1538,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c4a9028fe891bc40bb109e288a5500d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sprites:
+  _injuredTimer: 3
+  _sprites:
   - {fileID: 596867787, guid: aa4c2aefac032a34f97dace726c00c7f, type: 3}
+  - {fileID: 2036689379, guid: aa4c2aefac032a34f97dace726c00c7f, type: 3}
+  - {fileID: -1188721927, guid: aa4c2aefac032a34f97dace726c00c7f, type: 3}
   - {fileID: 1549104137, guid: aa4c2aefac032a34f97dace726c00c7f, type: 3}
+  - {fileID: -1647531295, guid: aa4c2aefac032a34f97dace726c00c7f, type: 3}
 --- !u!114 &1592359216
 MonoBehaviour:
   m_ObjectHideFlags: 0
