@@ -13,6 +13,8 @@ public class CombatTester : MonoBehaviour
     
     [SerializeField] private LayerMask enemyLayer;
 
+    [SerializeField] private GameObject attackSprite;
+
     [SerializeField] private float punchCooldown = 2;
     private float punchCooldownTimer;
 
@@ -43,6 +45,7 @@ public class CombatTester : MonoBehaviour
             punchCooldownTimer = punchCooldown;
             punchDurationTimer = punchDuration;
             isPunching = true;
+            attackSprite.SetActive(true);
 
             inLineCollider.OverlapCollider(contactFilter2D, cols);
             if (cols.Count > 0)
@@ -76,6 +79,7 @@ public class CombatTester : MonoBehaviour
         {
             punchDurationTimer = 0;
             isPunching = false;
+            attackSprite.SetActive(false);
         }
 
     }

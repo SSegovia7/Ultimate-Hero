@@ -862,6 +862,7 @@ MonoBehaviour:
     m_Bits: 64
   jumpingGravityScale: 2
   fallingGravityScale: 2.5
+  combatTester: {fileID: 0}
 --- !u!114 &586245554
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1435,6 +1436,9 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 128
+  punchCooldown: 1
+  punchDuration: 1
+  isPunching: 0
   cols: []
 --- !u!114 &1592359211
 MonoBehaviour:
@@ -1466,6 +1470,7 @@ MonoBehaviour:
     m_Bits: 64
   jumpingGravityScale: 2
   fallingGravityScale: 2.5
+  combatTester: {fileID: 1592359210}
 --- !u!114 &1592359212
 MonoBehaviour:
   m_ObjectHideFlags: 0
