@@ -6,6 +6,7 @@ public class PlayerStates : MonoBehaviour
 {
     public static PlayerStates StateInstance {get; private set;}
     private StatesOfPlayer _playerState;
+    // singleton that allows us to get and set the player states 
     void Awake()
     {
         if(StateInstance != null && StateInstance != this)
