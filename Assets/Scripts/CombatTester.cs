@@ -17,6 +17,17 @@ public class CombatTester : MonoBehaviour
     Controls controls = new Controls();
     private ContactFilter2D contactFilter2D;
     public List<Collider2D> cols = new List<Collider2D>();
+
+    public Transform attackPoint;
+    public float attackRange = 0.5f;
+
+
+
+
+    void Attack()
+    {
+
+    }
     
     private void Awake()
     {
