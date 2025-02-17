@@ -450,11 +450,8 @@ GameObject:
   - component: {fileID: 411937258}
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
-<<<<<<< Updated upstream
   - component: {fileID: 411937259}
   - component: {fileID: 411937260}
-=======
->>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 =======
@@ -570,7 +567,6 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
-<<<<<<< Updated upstream
 --- !u!61 &411937258
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -623,9 +619,6 @@ BoxCollider2D:
 =======
 --- !u!114 &411937258
 >>>>>>> Stashed changes
-=======
---- !u!114 &411937258
->>>>>>> Stashed changes
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -634,7 +627,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 411937254}
   m_Enabled: 1
   m_EditorHideFlags: 0
-<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
   m_Script: {fileID: 11500000, guid: 83b745500f028af4386ced51fde37c8e, type: 3}
@@ -669,11 +661,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
-=======
-  m_Script: {fileID: 11500000, guid: 55cbee58934524a4099e422702d55ae0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
->>>>>>> Stashed changes
 =======
   m_Script: {fileID: 11500000, guid: 55cbee58934524a4099e422702d55ae0, type: 3}
   m_Name: 
