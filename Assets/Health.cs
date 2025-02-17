@@ -31,4 +31,11 @@ public class Health : MonoBehaviour
         healthBar.SetHealth(currentHealth);
         Debug.Log($"Owch you lost {damage} health");
     }
+
+    // private void OnCollisionEnter2D(Collision2D collision) 
+    // {
+    //     Debug.Log("Took 5 damage");
+    //     TakeDamage(5);
+
+    // }
 }
