@@ -18,7 +18,6 @@ public class PlayerInput : MonoBehaviour
         controls.VerticalMove = Input.GetAxis(VerticalControls);
         controls.JumpState = Input.GetKeyDown(JumpButton);
         controls.AttackState = Input.GetKeyDown(AttackButton);
-
         return controls;
     } 
 }

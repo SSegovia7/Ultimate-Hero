@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CharacterMovement : MonoBehaviour
 {
-    [SerializeField] private bool canMove = true;
+    [SerializeField] public bool canMove = true;
     [Tooltip(("If your character does not jump, ignore all below 'Jumping' Character"))]
     [SerializeField] private bool doesCharacterJump = false;
 
@@ -33,6 +33,7 @@ public class CharacterMovement : MonoBehaviour
 
     PlayerInput input;
     Controls controls = new Controls();
+    public CombatTester combatTester;
 
     // 
     private Vector3 charDefaultRelPos, baseDefPos;
@@ -51,15 +52,25 @@ public class CharacterMovement : MonoBehaviour
     private void Update()
     {
         controls = input.GetInput();
-        if (controls.JumpState && currentJumps < possibleJumps)
+        if (controls.JumpState && currentJumps < possibleJumps & combatTester.isPunching == false)
         {
+            PlayerStates.StateInstance.GetSetPlayerState = PlayerStates.StatesOfPlayer.Jumping;
+            Debug.Log("Jumping");
             jump = true;
         }
     }
 
     private void FixedUpdate()
     {
-        Move();
+        if (combatTester.isPunching == false)
+        {
+            Move();
+        }
+        else
+        {
+            charRB.velocity = Vector2.zero;
+            baseRB.velocity = Vector2.zero;
+        }
     }
 
     private void Move()
@@ -121,7 +132,7 @@ public class CharacterMovement : MonoBehaviour
                 // --- horizontal position check
                 if (charRB.transform.localPosition != charDefaultRelPos)
                 {
-                    print("pos diff- local: " + charRB.transform.localPosition + "  --default: " + charDefaultRelPos);
+                    //print("pos diff- local: " + charRB.transform.localPosition + "  --default: " + charDefaultRelPos);
                     var charTransform = charRB.transform;
                     charTransform.localPosition = new Vector2(charDefaultRelPos.x,
                         charTransform.localPosition.y);
@@ -157,7 +168,9 @@ public class CharacterMovement : MonoBehaviour
             currentJumps = 0;
             // charRB.velocity = Vector2.zero;
             // baseRB.velocity = Vector2.zero;
+
             Debug.Log("setting velocity to zero");
+            PlayerStates.StateInstance.GetSetPlayerState = PlayerStates.StatesOfPlayer.Moving;
         }
     }
 
