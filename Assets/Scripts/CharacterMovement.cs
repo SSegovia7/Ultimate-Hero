@@ -26,7 +26,7 @@ public class CharacterMovement : MonoBehaviour
     [SerializeField] private LayerMask detectLayer;
     [SerializeField] private float jumpingGravityScale;
     [SerializeField] private float fallingGravityScale;
-    private bool jump;
+    private bool jump = false;
 
     private bool facingRight = true;
     private Vector3 velocity = Vector3.zero;
