@@ -53,7 +53,7 @@ public class CharacterMovement : MonoBehaviour
         controls = input.GetInput();
         if (controls.JumpState && currentJumps < possibleJumps)
         {
-            PlayerStates.StateInstance.GetSetPlayerState = PlayerStates.StatesOfPlayer.Jumping;
+            Locator.Instance.StatesOfPlayer.GetSetPlayerState = PlayerStates.StatesOfPlayer.Jumping;
             Debug.Log("Jumping");
             jump = true;
         }
@@ -74,10 +74,8 @@ public class CharacterMovement : MonoBehaviour
         if (canMove)
         {
             Vector3 targetVelocity = new Vector2(controls.HorizontalMove * hSpeed, controls.VerticalMove * vSpeed);
-
             Vector2 _velocity = Vector3.SmoothDamp(baseRB.velocity, targetVelocity, ref velocity, movementSmooth);
             baseRB.velocity = _velocity;
-
             //----- 
             if (doesCharacterJump)
             {
@@ -161,7 +159,7 @@ public class CharacterMovement : MonoBehaviour
             // baseRB.velocity = Vector2.zero;
 
             Debug.Log("setting velocity to zero");
-            PlayerStates.StateInstance.GetSetPlayerState = PlayerStates.StatesOfPlayer.Moving;
+            Locator.Instance.StatesOfPlayer.GetSetPlayerState = PlayerStates.StatesOfPlayer.Moving;
         }
     }
 
