@@ -2,14 +2,16 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Numerics;
+using TMPro.EditorUtilities;
 using Unity.VisualScripting;
 using UnityEngine;
+using System.Threading;
 
 public class PosingController : MonoBehaviour
 {
-    public delegate bool CheckCombo(List<int> listOfInputs);
-    public event CheckCombo CheckPlayerPoseInput;
-    private List<int> _abilityCombo;
+    public delegate bool PlayerUsedAbility(List<KeyCode> listOfInputs);
+    public event PlayerUsedAbility AbilityUsed;
+    private List<KeyCode> _abilityCombo;
     private CharacterMovement _playerMovement;
     // this crap will need to be replaced with actual animator later, too busy
     private SpriteRenderer _playerSprite;
@@ -23,27 +25,28 @@ public class PosingController : MonoBehaviour
 
     void Start()
     {
-        _abilityCombo = new List<int>();
+        _abilityCombo = new List<KeyCode>();
         _playerMovement = this.GetComponent<CharacterMovement>();
         _playerSprite = this.GetComponentInChildren<SpriteRenderer>();
         _playerRigidbody = this.GetComponent<Rigidbody2D>();
         _zeroVector = UnityEngine.Vector2.zero;
+        Locator.Instance.StatesOfPlayer.GetSetPlayerState = PlayerStates.StatesOfPlayer.Idle;
 
     }
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(PlayerStates.StateInstance.GetSetPlayerState);
+        Debug.Log(Locator.Instance.StatesOfPlayer.GetSetPlayerState);
         // needed so that player doesn't fall through shadow
         // if player jumps then presses E, they will fall through the shadow base
-        if(PlayerStates.StateInstance.GetSetPlayerState == PlayerStates.StatesOfPlayer.Jumping)
+        if(Locator.Instance.StatesOfPlayer.GetSetPlayerState == PlayerStates.StatesOfPlayer.Jumping)
         {
             // as long as the character is in the air, no code below will be called
             return;
         }
 
         // if player is injured 
-        if(PlayerStates.StateInstance.GetSetPlayerState == PlayerStates.StatesOfPlayer.Injured)
+        if(Locator.Instance.StatesOfPlayer.GetSetPlayerState == PlayerStates.StatesOfPlayer.Injured)
         {
             // knock them out of pose for x amount of time
             PlayerKnockedOutOfPosing();
@@ -56,34 +59,34 @@ public class PosingController : MonoBehaviour
             PlayerIsPosing();
         }
         // as long as the character is in their posing stances, this code can be reached
-        if(PlayerStates.StateInstance.GetSetPlayerState == PlayerStates.StatesOfPlayer.Posing)
+        if(Locator.Instance.StatesOfPlayer.GetSetPlayerState == PlayerStates.StatesOfPlayer.Posing)
         {
             // get all inputs of the direction arrows
-            if(Input.GetKey(KeyCode.RightArrow))
+            if(Input.GetKeyDown(KeyCode.RightArrow))
             {
                 // store button press in list
-                _abilityCombo.Add((int)KeyCode.RightArrow);
+                _abilityCombo.Add(KeyCode.RightArrow);
                 // change pose to right pose
                 _playerSprite.sprite = _sprites[1];
             }
-            if(Input.GetKey(KeyCode.UpArrow))
+            if(Input.GetKeyDown(KeyCode.UpArrow))
             {
                 // store button press in list
-                _abilityCombo.Add((int)KeyCode.UpArrow);
+                _abilityCombo.Add(KeyCode.UpArrow);
                 // change pose to up pose
                 _playerSprite.sprite = _sprites[2];
             }
-            if(Input.GetKey(KeyCode.LeftArrow))
+            if(Input.GetKeyDown(KeyCode.LeftArrow))
             {
                 // store button press in list
-                _abilityCombo.Add((int)KeyCode.LeftArrow);
+                _abilityCombo.Add(KeyCode.LeftArrow);
                 // change pose to left pose
                 _playerSprite.sprite = _sprites[3];
             }
-            if(Input.GetKey(KeyCode.DownArrow))
+            if(Input.GetKeyDown(KeyCode.DownArrow))
             {
                 // store button press in list
-                _abilityCombo.Add((int)KeyCode.DownArrow);
+                _abilityCombo.Add(KeyCode.DownArrow);
                 // change pos to down pose
                 _playerSprite.sprite = _sprites[4];
             }
@@ -91,16 +94,24 @@ public class PosingController : MonoBehaviour
 
             if(Input.GetKeyUp(KeyCode.E))
             {
-                CheckPlayerPoseInput?.Invoke(_abilityCombo);
-                PlayerStopPosing();
+                //AbilityUsed?.Invoke(_abilityCombo);
+                if(AbilityUsed(_abilityCombo))
+                {
+                    Invoke("PlayerStopPosing", 1);
+                }
+                else
+                {
+                    PlayerStopPosing();
+                }
             }
         }
     }
     
 
+
     private void PlayerIsPosing()
     {
-        PlayerStates.StateInstance.GetSetPlayerState = PlayerStates.StatesOfPlayer.Posing;
+        Locator.Instance.StatesOfPlayer.GetSetPlayerState = PlayerStates.StatesOfPlayer.Posing;
         _playerRigidbody.velocity = _zeroVector;
         _playerOtherRigidbody.velocity = _zeroVector;
         _playerMovement.enabled = false;
@@ -123,10 +134,10 @@ public class PosingController : MonoBehaviour
 
     private void PlayerStopPosing()
     {
-        PlayerStates.StateInstance.GetSetPlayerState = PlayerStates.StatesOfPlayer.Moving;
+        Locator.Instance.StatesOfPlayer.GetSetPlayerState = PlayerStates.StatesOfPlayer.Idle;
         _playerMovement.enabled = true;
         // reset list after to not have old combination data
-        _abilityCombo = new List<int>();
+        _abilityCombo = new List<KeyCode>();
         _playerSprite.sprite = _sprites[0];
         return;
     }
