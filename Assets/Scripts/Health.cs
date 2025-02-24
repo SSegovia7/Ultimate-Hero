@@ -28,7 +28,6 @@ public class Health : MonoBehaviour
 
         if (currentHealth <= 0 && isLiving == true){
             Die();
-            isLiving = false;
         }
     }
 
@@ -47,15 +46,20 @@ public class Health : MonoBehaviour
     public void Revive()
     {
         if (transform.tag == "Player"){
-            Debug.Log($"{transform.name}: has died");
-            Transform player_sprite_holder = this.transform.Find("Main Character");
+            Debug.Log($"{transform.name}: is Dead:{isLiving}");
+            Transform player_sprite_holder = this.transform.Find("Main Character"); //sr in child gameObject
             SpriteRenderer player_renderer = player_sprite_holder.GetComponent<SpriteRenderer>(); //gets player sprite renderer
             player_renderer.enabled = !player_renderer.enabled; //flips player sprite renderer
         }
         else if (transform.tag == "Enemy"){
-            Debug.Log($"{transform.name}: has died");
-            this.GetComponent<SpriteRenderer>().enabled = !this.GetComponent<SpriteRenderer>().enabled;
+            Debug.Log($"{transform.name}: is Dead: {isLiving}");
+            this.GetComponent<SpriteRenderer>().enabled = !this.GetComponent<SpriteRenderer>().enabled; //flips sr
         }
+        if (currentHealth <= 0){ //resets health
+            healthBar.SetHealth(maxHealth);
+            currentHealth = maxHealth;
+        }
+        isLiving = !isLiving; //flips isLiving bool
 
 
     }
