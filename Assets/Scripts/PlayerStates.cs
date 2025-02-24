@@ -4,17 +4,12 @@ using UnityEngine;
 
 public class PlayerStates : MonoBehaviour
 {
-    public static PlayerStates StateInstance {get; private set;}
+    
     private StatesOfPlayer _playerState;
     // singleton that allows us to get and set the player states 
-    void Awake()
+    void Start()
     {
-        if(StateInstance != null && StateInstance != this)
-        {
-            Destroy(this);
-            return;
-        }
-        StateInstance = this;
+        _playerState = StatesOfPlayer.Idle;
     }
     public enum StatesOfPlayer {
         Moving, Attacking, Jumping, Posing, Injured, Idle
