@@ -29,6 +29,8 @@ public class CombatTester : MonoBehaviour
     Controls controls = new Controls();
     private ContactFilter2D contactFilter2D;
     public List<Collider2D> cols = new List<Collider2D>();
+
+    [SerializeField] public int punch_damage = 20;
     
     private void Awake()
     {
@@ -58,11 +60,13 @@ public class CombatTester : MonoBehaviour
             {
                 foreach (var col in cols)
                 {
-                    print(col.transform.name);
+                    print($"You attacked: {col.transform.name}");
                     if (col.TryGetComponent(out SpriteRenderer sr))
                     {
                         sr.color = Color.red;
                     }
+                    Health enemy_health = col.GetComponent<Health>(); //damaging enemy and updating health
+                    enemy_health.TakeDamage(punch_damage);
                 }
             }
         }
