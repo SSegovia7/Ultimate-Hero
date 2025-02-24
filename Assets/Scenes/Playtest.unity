@@ -503,7 +503,7 @@ MonoBehaviour:
   HorizontalControls: Horizontal
   VerticalControls: Vertical
   JumpButton: 32
-  AttackButton: 9
+  AttackButton: 114
 --- !u!50 &380803813
 Rigidbody2D:
   serializedVersion: 4
