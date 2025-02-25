@@ -1710,6 +1710,7 @@ GameObject:
   - component: {fileID: 1661737408}
   - component: {fileID: 1661737407}
   - component: {fileID: 1661737409}
+  - component: {fileID: 1661737410}
   m_Layer: 0
   m_Name: Main Character
   m_TagString: Untagged
@@ -1726,8 +1727,8 @@ Transform:
   m_GameObject: {fileID: 1661737405}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.093, y: 0.12, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.08, y: 1.58, z: 0}
+  m_LocalScale: {x: 5, y: 5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1682995802}
@@ -1768,8 +1769,8 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 1.40625}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0}
-    oldSize: {x: 1.375, y: 2.8125}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.7, y: 0.7}
     newSize: {x: 1.375, y: 2.8125}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -1819,7 +1820,7 @@ SpriteRenderer:
   m_SortingLayerID: 630944269
   m_SortingLayer: 3
   m_SortingOrder: 1
-  m_Sprite: {fileID: 596867787, guid: aa4c2aefac032a34f97dace726c00c7f, type: 3}
+  m_Sprite: {fileID: -2134393918, guid: 8283d458a1e9b4944b84c6e914480364, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1857,6 +1858,27 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!95 &1661737410
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1661737405}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e461f2015f5981843a94615bc6d6cda5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1682995801
 GameObject:
   m_ObjectHideFlags: 0

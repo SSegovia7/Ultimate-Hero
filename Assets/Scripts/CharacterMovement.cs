@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class CharacterMovement : MonoBehaviour
 {
@@ -34,6 +35,8 @@ public class CharacterMovement : MonoBehaviour
     PlayerInput input;
     Controls controls = new Controls();
 
+    Animator animator;
+
     // 
     private Vector3 charDefaultRelPos, baseDefPos;
 
@@ -46,6 +49,7 @@ public class CharacterMovement : MonoBehaviour
     private void Start()
     {
         charDefaultRelPos = charRB.transform.localPosition;
+        animator = GetComponentInChildren<Animator>();
     }
 
     private void Update()
@@ -75,6 +79,10 @@ public class CharacterMovement : MonoBehaviour
 
             Vector2 _velocity = Vector3.SmoothDamp(baseRB.velocity, targetVelocity, ref velocity, movementSmooth);
             baseRB.velocity = _velocity;
+
+            if (Math.Abs(velocity.x) > 0){
+                animator.SetFloat("xVelocity", 1);
+            }
 
             //----- 
             if (doesCharacterJump)
