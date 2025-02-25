@@ -218,7 +218,7 @@ SpriteRenderer:
   m_SortingLayerID: 630944269
   m_SortingLayer: 3
   m_SortingOrder: 1
-  m_Sprite: {fileID: 868601893, guid: c4a35b864b74a1b4bafc26eb2b2d93fd, type: 3}
+  m_Sprite: {fileID: 486376605, guid: e7138a222dbd7764e926c83513c5f5f1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -746,7 +746,7 @@ SpriteRenderer:
   m_SortingLayerID: 630944269
   m_SortingLayer: 3
   m_SortingOrder: 1
-  m_Sprite: {fileID: 868601893, guid: c4a35b864b74a1b4bafc26eb2b2d93fd, type: 3}
+  m_Sprite: {fileID: 486376605, guid: e7138a222dbd7764e926c83513c5f5f1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1902,11 +1902,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6227497599759919025, guid: 221b5b2b7fc35bb4a8799971e9623477, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 314
+      value: 774
       objectReference: {fileID: 0}
     - target: {fileID: 6227497599759919025, guid: 221b5b2b7fc35bb4a8799971e9623477, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 292
+      value: 489
       objectReference: {fileID: 0}
     - target: {fileID: 6227497599759919025, guid: 221b5b2b7fc35bb4a8799971e9623477, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2050,7 +2050,7 @@ SpriteRenderer:
   m_SortingLayerID: 630944269
   m_SortingLayer: 3
   m_SortingOrder: 1
-  m_Sprite: {fileID: 868601893, guid: c4a35b864b74a1b4bafc26eb2b2d93fd, type: 3}
+  m_Sprite: {fileID: 486376605, guid: e7138a222dbd7764e926c83513c5f5f1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3099,7 +3099,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1576048233
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3957,7 +3957,7 @@ SpriteRenderer:
   m_SortingLayerID: 630944269
   m_SortingLayer: 3
   m_SortingOrder: 1
-  m_Sprite: {fileID: 868601893, guid: c4a35b864b74a1b4bafc26eb2b2d93fd, type: 3}
+  m_Sprite: {fileID: 486376605, guid: e7138a222dbd7764e926c83513c5f5f1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -4103,11 +4103,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6227497599759919025, guid: 221b5b2b7fc35bb4a8799971e9623477, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -341.2675
+      value: -604
       objectReference: {fileID: 0}
     - target: {fileID: 6227497599759919025, guid: 221b5b2b7fc35bb4a8799971e9623477, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 292
+      value: 495
       objectReference: {fileID: 0}
     - target: {fileID: 6227497599759919025, guid: 221b5b2b7fc35bb4a8799971e9623477, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
