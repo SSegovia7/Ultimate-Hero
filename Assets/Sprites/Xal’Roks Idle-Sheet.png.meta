@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 68cb9b41e6aa63848bb4015872fc07c1
+guid: e7138a222dbd7764e926c83513c5f5f1
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,85 +97,85 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Z Idle_0
+      name: "Xal\u2019Roks Idle-Sheet_0"
       rect:
         serializedVersion: 2
-        x: 0
-        y: 2
-        width: 58
-        height: 66
-      alignment: 9
-      pivot: {x: 0.6, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1844d0a84b8195241b4a422379d3b5d3
-      internalID: 672194003
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Z Idle_1
-      rect:
-        serializedVersion: 2
-        x: 70
-        y: 2
-        width: 58
-        height: 67
-      alignment: 9
-      pivot: {x: 0.6, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b9023ca92cc6ecc41a470c21140ac002
-      internalID: 860536249
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Z Idle_2
-      rect:
-        serializedVersion: 2
-        x: 141
-        y: 2
+        x: 9
+        y: 1
         width: 57
-        height: 67
-      alignment: 9
-      pivot: {x: 0.6, y: 0}
+        height: 75
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b3691ca890467044eb221e95cce8de31
-      internalID: 1481245324
+      spriteID: d511091df464a8c4cacf51077b0ce80d
+      internalID: 486376605
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Z Idle_3
+      name: "Xal\u2019Roks Idle-Sheet_1"
       rect:
         serializedVersion: 2
-        x: 210
-        y: 2
-        width: 58
-        height: 67
-      alignment: 9
-      pivot: {x: 0.6, y: 0}
+        x: 89
+        y: 1
+        width: 57
+        height: 76
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 96f3580e3aebc5245821ecbbb4f37c0c
-      internalID: 510342900
+      spriteID: aecb36ac5486b8f4e9324c6dd76f4ccd
+      internalID: 782876124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Xal\u2019Roks Idle-Sheet_2"
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 1
+        width: 57
+        height: 76
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a02abb3fdb8fde34097afebdedd15c28
+      internalID: 1780532889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Xal\u2019Roks Idle-Sheet_3"
+      rect:
+        serializedVersion: 2
+        x: 249
+        y: 1
+        width: 57
+        height: 76
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5206472b8c4c03a40a8e2a8f52fd15ab
+      internalID: 663739540
       vertices: []
       indices: 
       edges: []
@@ -191,10 +191,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Z Idle_0: 672194003
-      Z Idle_1: 860536249
-      Z Idle_2: 1481245324
-      Z Idle_3: 510342900
+      "Xal\u2019Roks Idle-Sheet_0": 486376605
+      "Xal\u2019Roks Idle-Sheet_1": 782876124
+      "Xal\u2019Roks Idle-Sheet_2": 1780532889
+      "Xal\u2019Roks Idle-Sheet_3": 663739540
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
