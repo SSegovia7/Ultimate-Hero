@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 30813674}
   - component: {fileID: 30813678}
   - component: {fileID: 30813677}
+  - component: {fileID: 30813679}
   m_Layer: 7
   m_Name: Enemy (2)
   m_TagString: Untagged
@@ -274,6 +275,27 @@ MonoBehaviour:
   maxHealth: 100
   healthBar: {fileID: 1058790038}
   isLiving: 1
+--- !u!95 &30813679
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 30813673}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 97dba31bbf86b9741866d5069c1449c1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &117608296
 GameObject:
   m_ObjectHideFlags: 0
@@ -663,6 +685,7 @@ GameObject:
   - component: {fileID: 409222414}
   - component: {fileID: 409222417}
   - component: {fileID: 409222418}
+  - component: {fileID: 409222419}
   m_Layer: 7
   m_Name: Enemy (1)
   m_TagString: Untagged
@@ -802,6 +825,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player_health: {fileID: 380803815}
   collision_damage: 20
+--- !u!95 &409222419
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 409222413}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6f8bc8516ed61aa4dbd6a6eeaa7dd998, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &413873757
 GameObject:
   m_ObjectHideFlags: 0
@@ -1955,6 +1999,7 @@ GameObject:
   - component: {fileID: 1064249474}
   - component: {fileID: 1064249478}
   - component: {fileID: 1064249479}
+  - component: {fileID: 1064249480}
   m_Layer: 7
   m_Name: Enemy
   m_TagString: Untagged
@@ -2106,6 +2151,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player_health: {fileID: 380803815}
   collision_damage: 20
+--- !u!95 &1064249480
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1064249473}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d8e1a1258ee0f874aa57baba6017aa61, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1074850096
 GameObject:
   m_ObjectHideFlags: 0
@@ -3874,6 +3940,7 @@ GameObject:
   - component: {fileID: 1903076345}
   - component: {fileID: 1903076349}
   - component: {fileID: 1903076348}
+  - component: {fileID: 1903076350}
   m_Layer: 7
   m_Name: Enemy (3)
   m_TagString: Untagged
@@ -4013,6 +4080,27 @@ MonoBehaviour:
   maxHealth: 100
   healthBar: {fileID: 1058790038}
   isLiving: 1
+--- !u!95 &1903076350
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1903076344}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c0761891d2f54424d949fefece33043c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &1910506249
 PrefabInstance:
   m_ObjectHideFlags: 0

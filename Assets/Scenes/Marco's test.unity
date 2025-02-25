@@ -2190,6 +2190,7 @@ MonoBehaviour:
   punchDuration: 0.5
   isPunching: 0
   cols: []
+  punch_damage: 20
 --- !u!114 &1592359211
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2296,7 +2297,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _injuredTimer: 3
   _sprites:
-  - {fileID: 596867787, guid: aa4c2aefac032a34f97dace726c00c7f, type: 3}
+  - {fileID: 672194003, guid: 68cb9b41e6aa63848bb4015872fc07c1, type: 3}
   - {fileID: 2036689379, guid: aa4c2aefac032a34f97dace726c00c7f, type: 3}
   - {fileID: -1188721927, guid: aa4c2aefac032a34f97dace726c00c7f, type: 3}
   - {fileID: 1549104137, guid: aa4c2aefac032a34f97dace726c00c7f, type: 3}
