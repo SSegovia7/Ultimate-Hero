@@ -29,7 +29,7 @@ public class CutsceneManager : MonoBehaviour
             backgroundImage.sprite = image;
             yield return new WaitForSeconds(delayBetweenImages);
         }
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2); // load into gameplay scene
         yield return null;
     }
 }
