@@ -4,9 +4,17 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
-    [SerializeField] private NodeController playerNodeController;
+    public static EnemyManager instance;
+
+    public NodeController playerNodeController;
 
     public List<GameObject> enemies;
+
+    private void Awake()
+    {
+        instance = this;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
