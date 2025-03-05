@@ -331,11 +331,12 @@ MonoBehaviour:
   combatTester: {fileID: 30813682}
   pathRefreshTimeout: 2
   targetMeleeDistance: 2
-  maximumMeleeDistanceX: 2.5
+  maximumMeleeDistanceX: 3
   maximumMeleeDistanceY: 1
   path: []
   pathTime: 0
   displacementFromPlayer: {x: 0, y: 0, z: 0}
+  canMove: 1
 --- !u!114 &30813682
 MonoBehaviour:
   m_ObjectHideFlags: 0
