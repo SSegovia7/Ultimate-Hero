@@ -15,6 +15,11 @@ public class NavmeshGenerator : MonoBehaviour
 
     void Start()
     {
+        CreateNodes();
+    }
+
+    void CreateNodes()
+    {
         nodes = new List<List<Node>>();
         if (nodeOffsetX <= 0 || nodeOffsetY <= 0)
         {
