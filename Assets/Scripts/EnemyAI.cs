@@ -36,6 +36,7 @@ public class EnemyAI : MonoBehaviour
         if (path.Count > 0 && pathTime < pathRefreshTimeout)
         {
             int x = 0;
+            FaceTheRightDirection(path[x].transform.position);
             transform.position = Vector3.MoveTowards(transform.position, new Vector3(path[x].transform.position.x, path[x].transform.position.y, 0), 0.1f);
 
             if (Vector2.Distance(transform.position, path[x].transform.position) < 0.1f)
@@ -47,6 +48,20 @@ public class EnemyAI : MonoBehaviour
         else if (pathTime >= pathRefreshTimeout)
         {
             CreatePath();
+        }
+    }
+
+    private void FaceTheRightDirection(Vector3 target)
+    {
+        if (target.x > transform.position.x)
+        {
+            // face right
+            transform.localScale = new Vector3(1, 1, 1);
+        }
+        else
+        {
+            // face left
+            transform.localScale = new Vector3(-1, 1, 1);
         }
     }
 
