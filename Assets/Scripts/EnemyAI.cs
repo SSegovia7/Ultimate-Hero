@@ -5,12 +5,18 @@ using UnityEngine;
 public class EnemyAI : MonoBehaviour
 {
     [SerializeField] private NodeController nodeController;
+    [SerializeField] private Animator animator;
+    [SerializeField] private EnemyCombatTester combatTester;
     [SerializeField] private float pathRefreshTimeout = 2f;
     [SerializeField] private float targetMeleeDistance = 2f;
+    [SerializeField] private float maximumMeleeDistanceX = 2.5f;
+    [SerializeField] private float maximumMeleeDistanceY = 1f;
     private Node closestNode = null;
     public List<Node> path = new List<Node>();
 
     public float pathTime = 0f;
+    public Vector3 displacementFromPlayer;
+    public bool canMove = true;
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +34,8 @@ public class EnemyAI : MonoBehaviour
     {
         pathTime += Time.deltaTime;
         UpdatePath();
+        FaceTheRightDirection(EnemyManager.instance.playerNodeController.transform.position);
+
     }
 
     public void UpdatePath()
@@ -36,7 +44,6 @@ public class EnemyAI : MonoBehaviour
         if (path.Count > 0 && pathTime < pathRefreshTimeout)
         {
             int x = 0;
-            FaceTheRightDirection(path[x].transform.position);
             transform.position = Vector3.MoveTowards(transform.position, new Vector3(path[x].transform.position.x, path[x].transform.position.y, 0), 0.1f);
 
             if (Vector2.Distance(transform.position, path[x].transform.position) < 0.1f)
@@ -47,7 +54,19 @@ public class EnemyAI : MonoBehaviour
         }
         else if (pathTime >= pathRefreshTimeout)
         {
+            CheckMelee();
             CreatePath();
+        }
+    }
+
+    private void CheckMelee()
+    {
+        displacementFromPlayer = transform.position - EnemyManager.instance.playerNodeController.transform.position;
+        // if close enough to and in line with player, attack
+        if (Mathf.Abs(displacementFromPlayer.x) <= maximumMeleeDistanceX && Mathf.Abs(displacementFromPlayer.y) <= maximumMeleeDistanceY && !combatTester.isPunching)
+        {
+            Debug.Log("attack");
+            animator.SetTrigger("BasicAttack");
         }
     }
 
