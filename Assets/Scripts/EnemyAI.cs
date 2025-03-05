@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class EnemyAI : MonoBehaviour
 {
+    [SerializeField] private NodeController nodeController;
+    private Node closestNode = null;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,5 +17,10 @@ public class EnemyAI : MonoBehaviour
     void Update()
     {
         
+    }
+
+    private void FixedUpdate()
+    {
+        closestNode = nodeController.closestNode;
     }
 }
