@@ -14,6 +14,7 @@ public class NodeController : MonoBehaviour
     {
         layerMask = LayerMask.GetMask("Navigation");
         Debug.Log(layerMask);
+        SetClosestNode();
     }
 
     // Update is called once per frame
