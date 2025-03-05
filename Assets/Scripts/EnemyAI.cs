@@ -5,7 +5,8 @@ using UnityEngine;
 public class EnemyAI : MonoBehaviour
 {
     [SerializeField] private NodeController nodeController;
-    [SerializeField] private float pathRefreshTimeout = 1f;
+    [SerializeField] private float pathRefreshTimeout = 2f;
+    [SerializeField] private float targetMeleeDistance = 2f;
     private Node closestNode = null;
     public List<Node> path = new List<Node>();
 
@@ -26,10 +27,10 @@ public class EnemyAI : MonoBehaviour
     private void FixedUpdate()
     {
         pathTime += Time.deltaTime;
-        CreatePath();
+        UpdatePath();
     }
 
-    public void CreatePath()
+    public void UpdatePath()
     {
         closestNode = nodeController.closestNode;
         if (path.Count > 0 && pathTime < pathRefreshTimeout)
@@ -45,13 +46,30 @@ public class EnemyAI : MonoBehaviour
         }
         else if (pathTime >= pathRefreshTimeout)
         {
-            Node target = EnemyManager.instance.playerNodeController.closestNode;
-            if (target != null)
-            {
-                path = AStarManager.instance.GeneratePath(closestNode, target);
-            }
-            pathTime = 0;
+            CreatePath();
         }
+    }
+
+    public void CreatePath()
+    {
+        Node playerNode = EnemyManager.instance.playerNodeController.closestNode;
+        if (playerNode == null) return;
+        Node targetNode = null;
+        if (playerNode.transform.position.x > transform.position.x)
+        {
+            // target node to the left of the player
+            targetNode = AStarManager.instance.FindNearestNode(playerNode.transform.position - new Vector3(targetMeleeDistance, 0, 0));
+        }
+        else
+        {
+            // target node to the right of the player
+            targetNode = AStarManager.instance.FindNearestNode(playerNode.transform.position + new Vector3(targetMeleeDistance, 0, 0));
+        }
+        if (targetNode)
+        {
+            path = AStarManager.instance.GeneratePath(closestNode, targetNode);
+        }
+        pathTime = 0;
     }
 
     private void OnDrawGizmos()
