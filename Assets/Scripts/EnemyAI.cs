@@ -9,7 +9,7 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private EnemyCombatTester combatTester;
     [SerializeField] private float pathRefreshTimeout = 2f;
     [SerializeField] private float targetMeleeDistance = 2f;
-    [SerializeField] private float maximumMeleeDistanceX = 2.5f;
+    [SerializeField] private float maximumMeleeDistanceX = 3f;
     [SerializeField] private float maximumMeleeDistanceY = 1f;
     private Node closestNode = null;
     public List<Node> path = new List<Node>();
@@ -34,8 +34,10 @@ public class EnemyAI : MonoBehaviour
     {
         pathTime += Time.deltaTime;
         UpdatePath();
-        FaceTheRightDirection(EnemyManager.instance.playerNodeController.transform.position);
-
+        if (canMove) // should probably replace this with a fsm down the line
+        {
+            FaceTheRightDirection(EnemyManager.instance.playerNodeController.transform.position);
+        }
     }
 
     public void UpdatePath()
@@ -54,20 +56,26 @@ public class EnemyAI : MonoBehaviour
         }
         else if (pathTime >= pathRefreshTimeout)
         {
-            CheckMelee();
-            CreatePath();
+            if (canMove && !CheckMelee())
+            {
+                CreatePath();
+            }
+            pathTime = 0;
         }
     }
 
-    private void CheckMelee()
+    // if in range, attacks and returns true; otherwise returns false
+    private bool CheckMelee()
     {
         displacementFromPlayer = transform.position - EnemyManager.instance.playerNodeController.transform.position;
         // if close enough to and in line with player, attack
-        if (Mathf.Abs(displacementFromPlayer.x) <= maximumMeleeDistanceX && Mathf.Abs(displacementFromPlayer.y) <= maximumMeleeDistanceY && !combatTester.isPunching)
+        if (Mathf.Abs(displacementFromPlayer.x) <= maximumMeleeDistanceX && Mathf.Abs(displacementFromPlayer.y) <= maximumMeleeDistanceY && canMove)
         {
             Debug.Log("attack");
             animator.SetTrigger("BasicAttack");
+            return true;
         }
+        return false;
     }
 
     private void FaceTheRightDirection(Vector3 target)
@@ -103,7 +111,6 @@ public class EnemyAI : MonoBehaviour
         {
             path = AStarManager.instance.GeneratePath(closestNode, targetNode);
         }
-        pathTime = 0;
     }
 
     private void OnDrawGizmos()
