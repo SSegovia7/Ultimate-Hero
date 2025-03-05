@@ -13,7 +13,6 @@ public class NodeController : MonoBehaviour
     void Start()
     {
         layerMask = LayerMask.GetMask("Navigation");
-        Debug.Log(layerMask);
         SetClosestNode();
     }
 
@@ -31,7 +30,6 @@ public class NodeController : MonoBehaviour
     private void SetClosestNode()
     {
         RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, proximityRadius, Vector2.zero, 0f, layerMask);
-        Debug.Log(hits.Length);
         if (hits.Length > 0)
         {
             float closestDistance = proximityRadius;
