@@ -6,8 +6,11 @@ public class EnemyManager : MonoBehaviour
 {
     public static EnemyManager instance;
 
-    [SerializeField] public float attackCooldown = 3f;
+    [SerializeField] public float attackCooldown = 3f; // amount of time after an enemy attacks before selecting a new attacker
     public float attackCooldownTimer = 0f;
+
+    [SerializeField] public float attackerRefreshCooldown = 6f; // amount of time an enemy attacks for before selecting a new attacker
+    public float attackerRefreshCooldownTimer = 0f;
 
     public NodeController playerNodeController;
 
@@ -25,18 +28,21 @@ public class EnemyManager : MonoBehaviour
 
     private void UpdateAttacker()
     {
+        attackerRefreshCooldownTimer += Time.deltaTime;
         if (attackingEnemyIndex == -1)
         {
             attackCooldownTimer += Time.deltaTime;
-            if (attackCooldownTimer > attackCooldown)
-            {
-                SetNewAttacker();
-            }
+        }
+        if (attackCooldownTimer > attackCooldown || attackerRefreshCooldownTimer > attackerRefreshCooldown)
+        {
+            SetNewAttacker();
         }
     }
 
     private void SetNewAttacker()
     {
+        attackCooldownTimer = 0;
+        attackerRefreshCooldownTimer = 0;
         if (attackingEnemyIndex != -1)
         {
             enemies[attackingEnemyIndex].isAttacking = false;
