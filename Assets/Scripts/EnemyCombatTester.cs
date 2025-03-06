@@ -7,6 +7,10 @@ using UnityEngine;
 
 public class EnemyCombatTester : MonoBehaviour
 {
+    [SerializeField] Health playerHealth;
+
+    [SerializeField] int attackDamage = 20;
+
     [SerializeField] private bool canAttack = true;
     
     [SerializeField] private Collider2D inLineCollider;
@@ -55,11 +59,16 @@ public class EnemyCombatTester : MonoBehaviour
             foreach (var col in cols)
             {
                 print($"Enemy attacked: {col.transform.name}");
-                if (col.TryGetComponent(out SpriteRenderer sr))
-                {
-                    sr.color = Color.red;
-                }
+                // if (col.TryGetComponent(out SpriteRenderer sr))
+                // {
+                //     sr.color = Color.red;
+                // }
                 Health enemy_health = col.GetComponent<Health>(); //damaging enemy and updating health
+                if (col.gameObject.tag == "Player")
+                {
+                    print($"Hit player");
+                    playerHealth.TakeDamage(attackDamage);
+                }
                 if (enemy_health)
                 {
                     enemy_health.TakeDamage(punch_damage);

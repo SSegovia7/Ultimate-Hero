@@ -357,8 +357,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 999b3b5a81107ba48888b4a67ea0bf67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerHealth: {fileID: 380803815}
+  attackDamage: 20
   canAttack: 1
-  inLineCollider: {fileID: 30813674}
+  inLineCollider: {fileID: 1169970518}
   playerLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -1844,8 +1846,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 999b3b5a81107ba48888b4a67ea0bf67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerHealth: {fileID: 380803815}
+  attackDamage: 20
   canAttack: 1
-  inLineCollider: {fileID: 1031005033}
+  inLineCollider: {fileID: 1852934818}
   playerLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -2562,7 +2566,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1169970517}
   - component: {fileID: 1169970516}
-  m_Layer: 0
+  - component: {fileID: 1169970518}
+  m_Layer: 7
   m_Name: EnemyPlaceholderAttack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2630,12 +2635,47 @@ Transform:
   m_GameObject: {fileID: 1169970515}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.5, y: 1.5, z: 0}
+  m_LocalPosition: {x: 1.5, y: 0.41999996, z: 0}
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 30813676}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &1169970518
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1169970515}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!1 &1199943287
 GameObject:
   m_ObjectHideFlags: 0
@@ -2800,6 +2840,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackCooldown: 3
   attackCooldownTimer: 0
+  attackerRefreshCooldown: 6
+  attackerRefreshCooldownTimer: 0
   playerNodeController: {fileID: 380803816}
   enemies:
   - {fileID: 1031005029}
@@ -2990,7 +3032,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1353331873}
   - component: {fileID: 1353331872}
-  m_Layer: 0
+  - component: {fileID: 1353331874}
+  m_Layer: 7
   m_Name: EnemyPlaceholderAttack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3058,12 +3101,47 @@ Transform:
   m_GameObject: {fileID: 1353331871}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.5, y: 1.5, z: 0}
+  m_LocalPosition: {x: 1.5, y: 0.41999996, z: 0}
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1504133844}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &1353331874
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1353331871}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!1 &1408580334
 GameObject:
   m_ObjectHideFlags: 0
@@ -3547,8 +3625,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 999b3b5a81107ba48888b4a67ea0bf67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerHealth: {fileID: 380803815}
+  attackDamage: 20
   canAttack: 1
-  inLineCollider: {fileID: 1504133845}
+  inLineCollider: {fileID: 1353331874}
   playerLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -4294,7 +4374,7 @@ GameObject:
   - component: {fileID: 1663233563}
   m_Layer: 6
   m_Name: Base/ Shadow
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4656,7 +4736,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1852934817}
   - component: {fileID: 1852934816}
-  m_Layer: 0
+  - component: {fileID: 1852934818}
+  m_Layer: 7
   m_Name: EnemyPlaceholderAttack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4724,12 +4805,47 @@ Transform:
   m_GameObject: {fileID: 1852934815}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.5, y: 1.5, z: 0}
+  m_LocalPosition: {x: 1.5, y: 0.42, z: 0}
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1031005032}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &1852934818
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1852934815}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!1001 &1910506249
 PrefabInstance:
   m_ObjectHideFlags: 0
