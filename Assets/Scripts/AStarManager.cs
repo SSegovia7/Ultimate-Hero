@@ -5,6 +5,7 @@ using UnityEngine;
 public class AStarManager : MonoBehaviour
 {
     public static AStarManager instance;
+    [SerializeField] private Vector2 hScoreModifier = Vector2.one;
 
     private void Awake()
     {
@@ -63,7 +64,7 @@ public class AStarManager : MonoBehaviour
                 {
                     connectedNode.cameFrom = currentNode;
                     connectedNode.gScore = heldGScore;
-                    connectedNode.hScore = Vector2.Distance(connectedNode.transform.position, end.transform.position);
+                    connectedNode.hScore = ((connectedNode.transform.position - end.transform.position) * hScoreModifier).magnitude;
 
                     if (!openSet.Contains(connectedNode))
                     {
