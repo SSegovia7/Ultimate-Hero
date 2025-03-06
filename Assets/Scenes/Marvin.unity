@@ -412,7 +412,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.12493675, y: 0.15859416}
-  m_Size: {x: 0.94134235, y: 0.31719604}
+  m_Size: {x: 1.4120136, y: 0.31719604}
   m_Direction: 1
 --- !u!212 &411937256
 SpriteRenderer:
@@ -494,6 +494,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player_health: {fileID: 1643089425}
+  collision_damage: 20
 --- !u!114 &411937259
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1511,6 +1512,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canAttack: 1
   inLineCollider: {fileID: 1237655414}
+  _abilityInLineCollider: {fileID: 0}
   enemyLayer:
     serializedVersion: 2
     m_Bits: 128
