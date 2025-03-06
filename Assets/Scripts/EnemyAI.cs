@@ -49,10 +49,13 @@ public class EnemyAI : MonoBehaviour
         {
 
             pathTime += Time.deltaTime;
-            UpdatePath();
             if (canMove) // should probably replace this with a fsm down the line
             {
                 FaceTheRightDirection(EnemyManager.instance.playerNodeController.transform.position);
+                if (!CheckMelee())
+                {
+                    UpdatePath();
+                }
             }
         }
         else
@@ -78,10 +81,7 @@ public class EnemyAI : MonoBehaviour
         }
         else if (pathTime >= pathRefreshTimeout)
         {
-            if (canMove && !CheckMelee())
-            {
-                CreatePath();
-            }
+            CreatePath();
             pathTime = 0;
         }
     }

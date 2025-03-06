@@ -317,12 +317,12 @@ MonoBehaviour:
   health: {fileID: 30813678}
   speed: 0.08
   pathRefreshTimeout: 1.5
-  targetMeleeDistance: 2
+  targetMeleeDistance: 1.5
   targetIdleDistance: 6
   idleRangeX: 1
   idleRangeY: 3
-  maximumMeleeDistanceX: 3
-  maximumMeleeDistanceY: 0.5
+  maximumMeleeDistanceX: 2
+  maximumMeleeDistanceY: 0.4
   enemyManager: {fileID: 1256388901}
   path: []
   pathTimeOffset: 0
@@ -1789,12 +1789,12 @@ MonoBehaviour:
   health: {fileID: 1031005030}
   speed: 0.08
   pathRefreshTimeout: 1.5
-  targetMeleeDistance: 2
+  targetMeleeDistance: 1.5
   targetIdleDistance: 6
   idleRangeX: 1
   idleRangeY: 3
-  maximumMeleeDistanceX: 3
-  maximumMeleeDistanceY: 0.5
+  maximumMeleeDistanceX: 2
+  maximumMeleeDistanceY: 0.4
   enemyManager: {fileID: 1256388901}
   path: []
   pathTimeOffset: 1
@@ -3553,12 +3553,12 @@ MonoBehaviour:
   health: {fileID: 1504133842}
   speed: 0.08
   pathRefreshTimeout: 1.5
-  targetMeleeDistance: 2
+  targetMeleeDistance: 1.5
   targetIdleDistance: 6
   idleRangeX: 1
   idleRangeY: 3
-  maximumMeleeDistanceX: 3
-  maximumMeleeDistanceY: 0.5
+  maximumMeleeDistanceX: 2
+  maximumMeleeDistanceY: 0.4
   enemyManager: {fileID: 1256388901}
   path: []
   pathTimeOffset: 0.2
