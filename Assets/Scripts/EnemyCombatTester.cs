@@ -63,15 +63,10 @@ public class EnemyCombatTester : MonoBehaviour
                 // {
                 //     sr.color = Color.red;
                 // }
-                Health enemy_health = col.GetComponent<Health>(); //damaging enemy and updating health
                 if (col.gameObject.tag == "Player")
                 {
                     print($"Hit player");
                     playerHealth.TakeDamage(attackDamage);
-                }
-                if (enemy_health)
-                {
-                    enemy_health.TakeDamage(punch_damage);
                 }
             }
         }
