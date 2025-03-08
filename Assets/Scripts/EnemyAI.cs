@@ -36,10 +36,26 @@ public class EnemyAI : MonoBehaviour
         pathTime = pathTimeOffset;
     }
 
+    private void OnEnable()
+    {
+        health.onDie.AddListener(OnDie);
+    }
+
+    private void OnDisable()
+    {
+        health.onDie.RemoveListener(OnDie);
+    }
+
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    private void OnDie()
+    {
+        enemyManager.OnDeadEnemy(this);
+        Destroy(gameObject);
     }
 
     private void FixedUpdate()
@@ -58,11 +74,11 @@ public class EnemyAI : MonoBehaviour
                 }
             }
         }
-        else
-        {
-            enemyManager.OnDeadEnemy(this);
-            Destroy(gameObject);
-        }
+        // else
+        // {
+        //     enemyManager.OnDeadEnemy(this);
+        //     Destroy(gameObject);
+        // }
     }
 
     public void UpdatePath()
