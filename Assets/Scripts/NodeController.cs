@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class NodeController : MonoBehaviour
 {
-    [SerializeField] private float proximityRadius = 1f;
+    [SerializeField] private float proximityRadius = 5f;
     public Node closestNode { get; private set; } = null;
     public int layerMask;
     
