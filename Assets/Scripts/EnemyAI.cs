@@ -39,17 +39,24 @@ public class EnemyAI : MonoBehaviour
     private void OnEnable()
     {
         health.onDie.AddListener(OnDie);
+        health.onDamaged.AddListener(OnDamaged);
     }
 
     private void OnDisable()
     {
         health.onDie.RemoveListener(OnDie);
+        health.onDamaged.RemoveListener(OnDamaged);
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    private void OnDamaged()
+    {
+        animator.SetTrigger("Damaged");
     }
 
     private void OnDie()
