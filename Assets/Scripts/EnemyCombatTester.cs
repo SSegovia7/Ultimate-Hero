@@ -7,8 +7,6 @@ using UnityEngine;
 
 public class EnemyCombatTester : MonoBehaviour
 {
-    [SerializeField] Health playerHealth;
-
     [SerializeField] int attackDamage = 20;
 
     [SerializeField] private bool canAttack = true;
@@ -28,8 +26,6 @@ public class EnemyCombatTester : MonoBehaviour
     public bool isPunching = false;
     
 
-    PlayerInput input;
-    Controls controls = new Controls();
     private ContactFilter2D contactFilter2D;
     public List<Collider2D> cols = new List<Collider2D>();
 
@@ -65,8 +61,12 @@ public class EnemyCombatTester : MonoBehaviour
                 // }
                 if (col.gameObject.tag == "Player")
                 {
-                    print($"Hit player");
-                    playerHealth.TakeDamage(attackDamage);
+                    Health playerHealth = col.gameObject.GetComponentInParent<Health>();
+                    if (playerHealth)
+                    {
+                        Debug.Log("hit player");
+                        playerHealth.TakeDamage(attackDamage);
+                    }
                 }
             }
         }

@@ -263,6 +263,9 @@ MonoBehaviour:
   currentHealth: 100
   maxHealth: 100
   healthBar: {fileID: 1058790038}
+  onDie:
+    m_PersistentCalls:
+      m_Calls: []
   isLiving: 1
 --- !u!95 &30813679
 Animator:
@@ -731,6 +734,9 @@ MonoBehaviour:
   currentHealth: 100
   maxHealth: 100
   healthBar: {fileID: 1910506251}
+  onDie:
+    m_PersistentCalls:
+      m_Calls: []
   isLiving: 1
 --- !u!114 &380803816
 MonoBehaviour:
@@ -1517,6 +1523,50 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &767536675
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 767536676}
+  - component: {fileID: 767536677}
+  m_Layer: 0
+  m_Name: EnemySpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &767536676
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 767536675}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 19.48, y: -2.71, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1256388902}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &767536677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 767536675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2995dd0780e0354ba5e09f6abe778b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &780484973
 GameObject:
   m_ObjectHideFlags: 0
@@ -1817,6 +1867,9 @@ MonoBehaviour:
   currentHealth: 100
   maxHealth: 100
   healthBar: {fileID: 1058790038}
+  onDie:
+    m_PersistentCalls:
+      m_Calls: []
   isLiving: 1
 --- !u!114 &1031005031
 MonoBehaviour:
@@ -1881,6 +1934,7 @@ CapsuleCollider2D:
     m_Bits: 4294967295
   m_ForceReceiveLayers:
     serializedVersion: 2
+                    print($"Hit player");
     m_Bits: 4294967295
   m_ContactCaptureLayers:
     serializedVersion: 2
@@ -2269,6 +2323,9 @@ MonoBehaviour:
   currentHealth: 100
   maxHealth: 100
   healthBar: {fileID: 1058790038}
+  onDie:
+    m_PersistentCalls:
+      m_Calls: []
   isLiving: 1
 --- !u!114 &1064249479
 MonoBehaviour:
@@ -2827,10 +2884,11 @@ Transform:
   m_GameObject: {fileID: 1256388900}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.2327867, y: -2.4842257, z: -9.735126}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 767536676}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1308054602
@@ -3581,6 +3639,9 @@ MonoBehaviour:
   currentHealth: 100
   maxHealth: 100
   healthBar: {fileID: 1058790038}
+  onDie:
+    m_PersistentCalls:
+      m_Calls: []
   isLiving: 1
 --- !u!114 &1504133843
 MonoBehaviour:
