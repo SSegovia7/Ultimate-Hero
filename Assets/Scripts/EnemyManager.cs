@@ -7,7 +7,7 @@ public class EnemyManager : MonoBehaviour
     public static EnemyManager instance;
 
     [SerializeField] private List<EnemySpawner> enemySpawners;
-    [SerializeField] private GameObject enemyPrefab;
+    [SerializeField] private List<GameObject> enemyPrefabs;
     [SerializeField] private float enemySpawnCooldown = 8f;
     public float enemySpawnCooldownTimer = 0f;
 
@@ -98,8 +98,12 @@ public class EnemyManager : MonoBehaviour
 
     private void SpawnEnemy()
     {
-        enemies.Add(enemySpawners[enemySpawnerIndex].SpawnEnemy(enemyPrefab));
-        enemySpawnerIndex = (enemySpawnerIndex + 1) % enemySpawners.Count; // cycle spawners
+        if (enemyPrefabs.Count > 0)
+        {
+            enemies.Add(enemySpawners[enemySpawnerIndex].SpawnEnemy(enemyPrefabs[0]));
+            enemySpawnerIndex = (enemySpawnerIndex + 1) % enemySpawners.Count; // cycle spawners
+            enemyPrefabs.RemoveAt(0);
+        }
     }
 
 
