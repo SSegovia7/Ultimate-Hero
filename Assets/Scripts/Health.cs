@@ -11,6 +11,7 @@ public class Health : MonoBehaviour
     
     public HealthBar healthBar;
     public UnityEvent onDie = new UnityEvent();
+    public UnityEvent onDamaged = new UnityEvent();
 
     public bool isLiving = true;
 
@@ -37,6 +38,7 @@ public class Health : MonoBehaviour
     {
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
+        onDamaged.Invoke();
     }
     
     public void Die()
