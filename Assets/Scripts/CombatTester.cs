@@ -10,6 +10,7 @@ public class CombatTester : MonoBehaviour
     [SerializeField] private bool canAttack = true;
     
     [SerializeField] private Collider2D inLineCollider;
+    [SerializeField] private BoxCollider2D _abilityInLineCollider;
     
     [SerializeField] private LayerMask enemyLayer;
 
@@ -39,6 +40,11 @@ public class CombatTester : MonoBehaviour
 
     // Update is called once per frame
     void Update()
+    {
+        BasicAttack();
+    }
+
+    void BasicAttack()
     {
         controls = input.GetInput();
         if (controls.AttackState & punchCooldownTimer == 0)
@@ -87,4 +93,22 @@ public class CombatTester : MonoBehaviour
         }
 
     }
+
+    // this should not be public - change later
+    public void AbilityAttack()
+    {
+        _abilityInLineCollider.OverlapCollider(contactFilter2D,cols);
+        if(cols.Count > 0)
+        {
+            foreach (var col in cols)
+            {
+                print(col.transform.name);
+                if (col.TryGetComponent(out SpriteRenderer sr))
+                {
+                    sr.color = Color.red;
+                }
+            }
+        }
+    }
+
 }
