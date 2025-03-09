@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] private EnemyManager enemyManager;
+    [SerializeField] private HealthBar enemyHealthBar;
 
     // Start is called before the first frame update
     void Start()
@@ -22,8 +23,11 @@ public class EnemySpawner : MonoBehaviour
     public EnemyAI SpawnEnemy(GameObject enemyPrefab)
     {
         GameObject spawnedEnemy = Instantiate(enemyPrefab, transform);
+        // link the necessary components
         EnemyAI enemyAI = spawnedEnemy.GetComponent<EnemyAI>();
         enemyAI.enemyManager = enemyManager;
+        Health enemyHealth = spawnedEnemy.GetComponent<Health>();
+        enemyHealth.healthBar = enemyHealthBar;
         return enemyAI;
 
     }

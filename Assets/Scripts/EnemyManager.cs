@@ -6,6 +6,11 @@ public class EnemyManager : MonoBehaviour
 {
     public static EnemyManager instance;
 
+    [SerializeField] private List<EnemySpawner> enemySpawners;
+    [SerializeField] private GameObject enemyPrefab;
+    [SerializeField] private float enemySpawnCooldown = 8f;
+    public float enemySpawnCooldownTimer = 0f;
+
     [SerializeField] public float attackCooldown = 3f; // amount of time after an enemy attacks before selecting a new attacker
     public float attackCooldownTimer = 0f;
 
@@ -16,6 +21,7 @@ public class EnemyManager : MonoBehaviour
 
     public List<EnemyAI> enemies;
     public int attackingEnemyIndex = -1;
+    public int enemySpawnerIndex = 0;
 
     private void Awake()
     {
@@ -24,10 +30,12 @@ public class EnemyManager : MonoBehaviour
     private void FixedUpdate()
     {
         UpdateAttacker();
+        UpdateSpawners();
     }
 
     private void UpdateAttacker()
     {
+        // attacker is refreshed either attackCooldown seconds after an enemy attacks/dies, or when there's been an attack for attackerRefreshCooldown seconds
         attackerRefreshCooldownTimer += Time.deltaTime;
         if (attackingEnemyIndex == -1)
         {
@@ -76,6 +84,22 @@ public class EnemyManager : MonoBehaviour
         {
             attackingEnemyIndex = -1;
         }
+    }
+
+    private void UpdateSpawners()
+    {
+        enemySpawnCooldownTimer += Time.deltaTime;
+        if (enemySpawnCooldownTimer > enemySpawnCooldown)
+        {
+            SpawnEnemy();
+            enemySpawnCooldownTimer = 0;
+        }
+    }
+
+    private void SpawnEnemy()
+    {
+        enemies.Add(enemySpawners[enemySpawnerIndex].SpawnEnemy(enemyPrefab));
+        enemySpawnerIndex = (enemySpawnerIndex + 1) % enemySpawners.Count; // cycle spawners
     }
 
 
