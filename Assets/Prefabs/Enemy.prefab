@@ -305,8 +305,8 @@ MonoBehaviour:
   speed: 0.08
   pathRefreshTimeout: 1.5
   targetMeleeDistance: 1.5
-  targetIdleDistance: 6
-  idleRangeX: 1
+  targetIdleDistance: 3
+  idleRangeX: 3
   idleRangeY: 3
   maximumMeleeDistanceX: 2
   maximumMeleeDistanceY: 0.4
@@ -329,7 +329,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c73f3459e741a064e83b5c9a2685d86b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  proximityRadius: 1
+  proximityRadius: 5
   layerMask: 0
 --- !u!114 &397748521374859704
 MonoBehaviour:
