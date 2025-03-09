@@ -11,6 +11,8 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] private float enemySpawnCooldown = 8f;
     public float enemySpawnCooldownTimer = 0f;
 
+    [SerializeField] private int maxEnemiesAtATime = 8;
+
     [SerializeField] public float attackCooldown = 3f; // amount of time after an enemy attacks before selecting a new attacker
     public float attackCooldownTimer = 0f;
 
@@ -98,7 +100,7 @@ public class EnemyManager : MonoBehaviour
 
     private void SpawnEnemy()
     {
-        if (enemyPrefabs.Count > 0)
+        if (enemyPrefabs.Count > 0 && enemies.Count < maxEnemiesAtATime)
         {
             enemies.Add(enemySpawners[enemySpawnerIndex].SpawnEnemy(enemyPrefabs[0]));
             enemySpawnerIndex = (enemySpawnerIndex + 1) % enemySpawners.Count; // cycle spawners
