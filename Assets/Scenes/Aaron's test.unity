@@ -585,6 +585,9 @@ MonoBehaviour:
   onDie:
     m_PersistentCalls:
       m_Calls: []
+  onDamaged:
+    m_PersistentCalls:
+      m_Calls: []
   isLiving: 1
 --- !u!114 &380803816
 MonoBehaviour:
@@ -2021,6 +2024,9 @@ MonoBehaviour:
   maxHealth: 100
   healthBar: {fileID: 1058790038}
   onDie:
+    m_PersistentCalls:
+      m_Calls: []
+  onDamaged:
     m_PersistentCalls:
       m_Calls: []
   isLiving: 1
