@@ -2450,7 +2450,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemySpawners:
   - {fileID: 767536677}
-  - {fileID: 767536677}
+  - {fileID: 1533909145}
   enemyPrefabs:
   - {fileID: 4847340797474179513, guid: 40d3e549064dd5f459fe46a739d43616, type: 3}
   - {fileID: 4847340797474179513, guid: 40d3e549064dd5f459fe46a739d43616, type: 3}
