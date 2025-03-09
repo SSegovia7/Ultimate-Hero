@@ -2467,8 +2467,9 @@ MonoBehaviour:
   - {fileID: 4847340797474179513, guid: 40d3e549064dd5f459fe46a739d43616, type: 3}
   - {fileID: 4847340797474179513, guid: 40d3e549064dd5f459fe46a739d43616, type: 3}
   - {fileID: 4847340797474179513, guid: 40d3e549064dd5f459fe46a739d43616, type: 3}
-  enemySpawnCooldown: 2
+  enemySpawnCooldown: 5
   enemySpawnCooldownTimer: 0
+  maxEnemiesAtATime: 8
   attackCooldown: 3
   attackCooldownTimer: 0
   attackerRefreshCooldown: 6
