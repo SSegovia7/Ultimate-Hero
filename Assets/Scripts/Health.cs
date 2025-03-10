@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Health : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class Health : MonoBehaviour
     [SerializeField] int maxHealth = 100;
     
     public HealthBar healthBar;
+    public UnityEvent onDie = new UnityEvent();
+    public UnityEvent onDamaged = new UnityEvent();
 
     public bool isLiving = true;
 
@@ -35,12 +38,14 @@ public class Health : MonoBehaviour
     {
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
+        onDamaged.Invoke();
     }
     
     public void Die()
     {
         Revive();
         Invoke("Revive", 2.0f);
+        onDie.Invoke();
     }
 
     public void Revive()
