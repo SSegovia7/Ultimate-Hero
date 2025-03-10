@@ -15,7 +15,7 @@ public class Health : MonoBehaviour
 
     public int PoseOnDeath = 20;
 
-    GameObject player;
+    GameObject player; //PLAYER OBJECT
 
     public bool isLiving = true;
 
@@ -56,7 +56,7 @@ public class Health : MonoBehaviour
     public void Die()
     {
         Revive(); //GAMEOBJECT DIES / TURNS INVISIBLE
-        player.GetComponent<Pose>().IncreasePose(PoseOnDeath);
+        player.GetComponent<Pose>().IncreasePose(PoseOnDeath); //PLAYER POSE BAR IS INCREASE ON ENEMY DEATH
         Invoke("Revive", 2.0f); //GAMEOBJECT IS REVIVED / VISIBLE / VALUES RESET
         onDie.Invoke();
     }
@@ -71,8 +71,7 @@ public class Health : MonoBehaviour
         }
         else if (transform.tag == "Enemy"){
             Debug.Log($"{transform.name}: is Dead: {isLiving}");
-            this.GetComponent<SpriteRenderer>().enabled = !this.GetComponent<SpriteRenderer>().enabled; //flips sr
-            
+            this.GetComponent<SpriteRenderer>().enabled = !this.GetComponent<SpriteRenderer>().enabled; //flips sr 
         }
         if (currentHealth <= 0){ //resets health
             healthBar.SetHealth(maxHealth);
