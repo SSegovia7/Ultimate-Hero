@@ -7,5 +7,6 @@ public class Ability : ScriptableObject
 {
     
     public string abilityName;
+    public int abilityCost = 20;
     public List<KeyCode> keycodeCombinations;
 }
