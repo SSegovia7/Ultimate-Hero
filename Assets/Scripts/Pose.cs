@@ -21,15 +21,15 @@ public class Pose : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.L))
         {
-            IncreasePose(20);   
+            IncreasePose(20);   //MANUALLY INCREASES POSE BY 20
         }
         if (Input.GetKeyDown(KeyCode.P))
         {
-            IncreasePose(-20); //lowers PoseBar by 20
+            IncreasePose(-20); //MANUALLY DECREASES POSE BY 20
         }
     }
 
-    public void IncreasePose(int value){
+    public void IncreasePose(int value){ //INCREASES POSE IN POSE BAR
         Debug.Log($"Pose Meter increasing by {value}");
         currentPose += value;
         poseBar.SetHealth(currentPose);
