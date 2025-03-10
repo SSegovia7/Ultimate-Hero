@@ -13,12 +13,18 @@ public class Health : MonoBehaviour
     public UnityEvent onDie = new UnityEvent();
     public UnityEvent onDamaged = new UnityEvent();
 
+    public int PoseOnDeath = 20;
+
+    GameObject player;
+
     public bool isLiving = true;
 
     void Start()
     {
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
+        player = GameObject.Find("Player Character"); //Finding player GO using strintg "Player Character" if err check name
+
     }
 
     // Update is called once per frame
@@ -49,12 +55,12 @@ public class Health : MonoBehaviour
     
     public void Die()
     {
-        Revive();
-        Invoke("Revive", 2.0f);
+        Revive(); //GAMEOBJECT DIES / TURNS INVISIBLE
+        Invoke("Revive", 2.0f); //GAMEOBJECT IS REVIVED / VISIBLE / VALUES RESET
         onDie.Invoke();
     }
 
-    public void Revive()
+    public void Revive() //CHECK GAME OBJECT TAG IN INSPECTOR ---NEEDS TO BE SET TO PLAYER OR ENEMEY
     {
         if (transform.tag == "Player"){
             Debug.Log($"{transform.name}: is Dead:{isLiving}");
@@ -65,6 +71,7 @@ public class Health : MonoBehaviour
         else if (transform.tag == "Enemy"){
             Debug.Log($"{transform.name}: is Dead: {isLiving}");
             this.GetComponent<SpriteRenderer>().enabled = !this.GetComponent<SpriteRenderer>().enabled; //flips sr
+            player.GetComponent<Pose>().IncreasePose(PoseOnDeath);
         }
         if (currentHealth <= 0){ //resets health
             healthBar.SetHealth(maxHealth);
