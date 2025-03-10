@@ -264,6 +264,9 @@ MonoBehaviour:
   onDie:
     m_PersistentCalls:
       m_Calls: []
+  onDamaged:
+    m_PersistentCalls:
+      m_Calls: []
   isLiving: 1
 --- !u!95 &5222016428579717575
 Animator:

@@ -95,6 +95,7 @@ public class EnemyAI : MonoBehaviour
         {
             int x = 0;
             transform.position = Vector3.MoveTowards(transform.position, new Vector3(path[x].transform.position.x, path[x].transform.position.y, 0), speed);
+            animator.SetBool("IsMoving", true);
 
             if (Vector2.Distance(transform.position, path[x].transform.position) < 0.1f)
             {
@@ -102,10 +103,15 @@ public class EnemyAI : MonoBehaviour
                 path.RemoveAt(x);
             }
         }
-        else if (pathTime >= pathRefreshTimeout)
+        else
         {
-            CreatePath();
-            pathTime = 0;
+            animator.SetBool("IsMoving", false);
+            if (pathTime >= pathRefreshTimeout)
+            {
+
+                CreatePath();
+                pathTime = 0;
+            }
         }
     }
 
@@ -118,6 +124,7 @@ public class EnemyAI : MonoBehaviour
         if (Mathf.Abs(displacementFromPlayer.x) <= maximumMeleeDistanceX && Mathf.Abs(displacementFromPlayer.y) <= maximumMeleeDistanceY && canMove)
         {
             Debug.Log("attack");
+            animator.SetBool("IsMoving", false);
             animator.SetTrigger("BasicAttack");
             enemyManager.OnEnemyAttack();
             isAttacking = false;
