@@ -6,14 +6,14 @@ using UnityEngine.SceneManagement;
 
 public class CutsceneManager : MonoBehaviour
 {
-    [SerializeField] private Image backgroundImage;
+    [SerializeField] private Animator animator;
     [SerializeField] private Sprite[] images;
     [SerializeField] private float delayBetweenImages = 5.0f;
 
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine("RunCutscene");
+        animator.Play("Play Cutscene");
     }
 
     // Update is called once per frame
@@ -22,14 +22,9 @@ public class CutsceneManager : MonoBehaviour
         
     }
 
-    IEnumerator RunCutscene()
+    public void FinishCutscene()
     {
-        foreach (Sprite image in images)
-        {
-            backgroundImage.sprite = image;
-            yield return new WaitForSeconds(delayBetweenImages);
-        }
-        SceneManager.LoadScene(2); // load into gameplay scene
-        yield return null;
+        SceneManager.LoadScene(2);
     }
+
 }
