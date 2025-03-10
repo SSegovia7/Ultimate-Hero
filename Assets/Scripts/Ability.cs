@@ -8,4 +8,6 @@ public class Ability : ScriptableObject
     
     public string abilityName;
     public List<KeyCode> keycodeCombinations;
+    public int abilityDamage;
+    public int abilityCost;
 }
