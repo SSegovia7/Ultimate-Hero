@@ -17,6 +17,7 @@ public class AbilityController : MonoBehaviour
     [SerializeField] private float _firstAbilityMagnitude;
     [SerializeField] private float _firstAbilityDistanceTimer;
     [SerializeField] private CharacterMovement _playerMovement;
+    [SerializeField] private Pose _poseMeter;
     private Vector2 _firstAbilityForce;
     private List<string> _abilityNames;
     private Dictionary<string, List<KeyCode>> _playerAbilities;
@@ -47,7 +48,7 @@ public class AbilityController : MonoBehaviour
 
     void Update()
     {
-        timer += Time.deltaTime;
+        //timer += Time.deltaTime;
     }
 
     /// <summary>
@@ -85,15 +86,28 @@ public class AbilityController : MonoBehaviour
                 }
             }
         }
-        
+        if(_abilityCalled == "Left Slide Kick Ability" || _abilityCalled == "Right Slide Kick Ability")
+        {
+            if(_poseMeter.GetPoseValue() < 20)
+            {
+                Debug.Log($"Not enough energy for {_abilityCalled}!");
+                return false;
+            }
+        }
+        if(_abilityCalled == "Push Back Ability")
+        {
+            if(_poseMeter.GetPoseValue() < 50)
+            {
+                Debug.Log($"Not enought energy for {_abilityCalled}!");
+                return false;
+            }
+        }
+
         return _isValid;
     }
 
     private void CallAbility()
     {
-        // put check cases here
-        // if have enough energy break and continue with code below otherwise return
-
         switch(_abilityCalled)
         {
             case "Left Slide Kick Ability":
@@ -188,7 +202,7 @@ public class AbilityController : MonoBehaviour
         {
             // do ability attack method from combat tester class for first ability
             Locator.Instance.CombatControl.AbilityAttack(1);
-            Debug.Log($"{timer}");
+            //Debug.Log($"{timer}");
         }
     }
 
