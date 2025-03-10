@@ -27,6 +27,10 @@ public class Pose : MonoBehaviour
         {
             IncreasePose(-20); //MANUALLY DECREASES POSE BY 20
         }
+        if(currentPose > 100)
+        {
+            currentPose = 100;
+        }
     }
 
     public void IncreasePose(int value){ //INCREASES POSE IN POSE BAR

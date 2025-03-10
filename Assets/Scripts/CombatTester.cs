@@ -3,6 +3,7 @@
 // youtube.com/c/nickhwang
 
 using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 
 public class CombatTester : MonoBehaviour
@@ -20,13 +21,14 @@ public class CombatTester : MonoBehaviour
     [SerializeField] private float _secondAbilityDamage;
     [SerializeField] private float _firstAbilityDamage;
     private float punchCooldownTimer;
+    private IEnumerator colorChangeCoroutine;
 
     [SerializeField] private float punchDuration = 1;
     [SerializeField] private List<int> _abilitiesDamage;
     private float punchDurationTimer;
 
     public bool isPunching = false;
-    
+    Pose playerEnergy;
 
     PlayerInput input;
     Controls controls = new Controls();
@@ -41,9 +43,8 @@ public class CombatTester : MonoBehaviour
         contactFilter2D.SetLayerMask(enemyLayer);
     }
     void Start()
-    {
-        _abilitiesDamage.Add(75);
-        _abilitiesDamage.Add(10);
+    {   
+        playerEnergy = this.GetComponent<Pose>();
     }
     // Update is called once per frame
     void Update()
@@ -71,9 +72,14 @@ public class CombatTester : MonoBehaviour
                     if (col.TryGetComponent(out SpriteRenderer sr))
                     {
                         sr.color = Color.red;
+                        colorChangeCoroutine = ColorChange(sr);
+                        StartCoroutine(colorChangeCoroutine);
                     }
                     Health enemy_health = col.GetComponent<Health>(); //damaging enemy and updating health
+                    
                     enemy_health.TakeDamage(punch_damage);
+                    playerEnergy.IncreasePose(5);
+
                 }
             }
         }
@@ -125,9 +131,17 @@ public class CombatTester : MonoBehaviour
                 if (col.TryGetComponent(out SpriteRenderer sr))
                 {
                     sr.color = Color.red;
+                    colorChangeCoroutine = ColorChange(sr);
+                    StartCoroutine(colorChangeCoroutine);
                 }
             }
         }
+    }
+
+    private IEnumerator ColorChange(SpriteRenderer sr)
+    {
+        yield return new WaitForSeconds(.2f);
+        sr.color = Color.white;
     }
 
 }

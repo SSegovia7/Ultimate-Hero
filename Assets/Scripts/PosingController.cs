@@ -26,6 +26,7 @@ public class PosingController : MonoBehaviour
     [SerializeField] private Rigidbody2D _playerOtherRigidbody;
     [SerializeField] private CharacterMovement _playerMovement;
 
+
     void Start()
     {
         _abilityCombo = new List<KeyCode>();
