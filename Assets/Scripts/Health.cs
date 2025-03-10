@@ -5,7 +5,7 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     // Start is called before the first frame update
-    [SerializeField] int currentHealth = 100;
+    [SerializeField] float currentHealth = 100;
     [SerializeField] int maxHealth = 100;
     
     public HealthBar healthBar;
@@ -34,7 +34,13 @@ public class Health : MonoBehaviour
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
-        healthBar.SetHealth(currentHealth);
+        healthBar.SetHealth((int) currentHealth);
+    }
+
+    public void EnemyDamaged(float damage)
+    {
+        this.currentHealth -= damage;
+        this.healthBar.SetHealth((int) currentHealth);
     }
     
     public void Die()
