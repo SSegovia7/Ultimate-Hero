@@ -1,14 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Health : MonoBehaviour
 {
     // Start is called before the first frame update
-    [SerializeField] int currentHealth = 100;
+    [SerializeField] float currentHealth = 100;
     [SerializeField] int maxHealth = 100;
     
     public HealthBar healthBar;
+    public UnityEvent onDie = new UnityEvent();
+    public UnityEvent onDamaged = new UnityEvent();
 
     public bool isLiving = true;
 
@@ -34,13 +37,21 @@ public class Health : MonoBehaviour
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
-        healthBar.SetHealth(currentHealth);
+        onDamaged.Invoke();
+        healthBar.SetHealth((int) currentHealth);
+    }
+
+    public void EnemyDamaged(float damage)
+    {
+        this.currentHealth -= damage;
+        this.healthBar.SetHealth((int) currentHealth);
     }
     
     public void Die()
     {
         Revive();
         Invoke("Revive", 2.0f);
+        onDie.Invoke();
     }
 
     public void Revive()

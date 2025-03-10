@@ -30,6 +30,8 @@ public class CharacterMovement : MonoBehaviour
 
     private bool facingRight = true;
     private Vector3 velocity = Vector3.zero;
+    
+    public bool FacingRight { get => facingRight ;}
 
     PlayerInput input;
     Controls controls = new Controls();

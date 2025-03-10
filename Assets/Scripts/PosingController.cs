@@ -6,36 +6,45 @@ using TMPro.EditorUtilities;
 using Unity.VisualScripting;
 using UnityEngine;
 using System.Threading;
+using TMPro;
 
 public class PosingController : MonoBehaviour
 {
     public delegate bool PlayerUsedAbility(List<KeyCode> listOfInputs);
     public event PlayerUsedAbility AbilityUsed;
     private List<KeyCode> _abilityCombo;
-    private CharacterMovement _playerMovement;
     // this crap will need to be replaced with actual animator later, too busy
     private SpriteRenderer _playerSprite;
     // not this below
     private Rigidbody2D _playerRigidbody;
+    private bool _abilityInUse;
+    
     
     private UnityEngine.Vector2 _zeroVector;
     [SerializeField] private float _injuredTimer;
     [SerializeField] private Sprite[] _sprites;
     [SerializeField] private Rigidbody2D _playerOtherRigidbody;
+    [SerializeField] private CharacterMovement _playerMovement;
 
     void Start()
     {
         _abilityCombo = new List<KeyCode>();
-        _playerMovement = this.GetComponent<CharacterMovement>();
         _playerSprite = this.GetComponentInChildren<SpriteRenderer>();
         _playerRigidbody = this.GetComponent<Rigidbody2D>();
         _zeroVector = UnityEngine.Vector2.zero;
+        _abilityInUse = false;
         Locator.Instance.StatesOfPlayer.GetSetPlayerState = PlayerStates.StatesOfPlayer.Idle;
 
     }
     // Update is called once per frame
     void Update()
     {
+        if(_abilityInUse)
+        {
+            Invoke("PlayerStopPosing", 2f);
+            return;
+        }
+
         Debug.Log(Locator.Instance.StatesOfPlayer.GetSetPlayerState);
         // needed so that player doesn't fall through shadow
         // if player jumps then presses E, they will fall through the shadow base
@@ -45,6 +54,7 @@ public class PosingController : MonoBehaviour
             return;
         }
 
+
         // if player is injured 
         if(Locator.Instance.StatesOfPlayer.GetSetPlayerState == PlayerStates.StatesOfPlayer.Injured)
         {
@@ -53,11 +63,19 @@ public class PosingController : MonoBehaviour
         }
         
 
+        if(Locator.Instance.StatesOfPlayer.GetSetPlayerState == PlayerStates.StatesOfPlayer.Idle)
+        {
+            PlayerStopPosing();
+        }
+        
+        
         // player press E to hold pose
-        if(Input.GetKeyDown(KeyCode.E))
+        if(Input.GetKeyDown(KeyCode.E) && Locator.Instance.StatesOfPlayer.GetSetPlayerState != PlayerStates.StatesOfPlayer.Posing)
         {
             PlayerIsPosing();
         }
+
+
         // as long as the character is in their posing stances, this code can be reached
         if(Locator.Instance.StatesOfPlayer.GetSetPlayerState == PlayerStates.StatesOfPlayer.Posing)
         {
@@ -90,21 +108,22 @@ public class PosingController : MonoBehaviour
                 // change pos to down pose
                 _playerSprite.sprite = _sprites[4];
             }
-    
+        }
 
-            if(Input.GetKeyUp(KeyCode.E))
+
+        if(Input.GetKeyUp(KeyCode.E))
+        {
+            if(AbilityUsed(_abilityCombo))
             {
-                //AbilityUsed?.Invoke(_abilityCombo);
-                if(AbilityUsed(_abilityCombo))
-                {
-                    Invoke("PlayerStopPosing", 1);
-                }
-                else
-                {
-                    PlayerStopPosing();
-                }
+                _abilityInUse = true;
+            }
+            else
+            {
+                PlayerStopPosing();
+                _playerMovement.enabled = true;
             }
         }
+
     }
     
 
@@ -135,7 +154,7 @@ public class PosingController : MonoBehaviour
     private void PlayerStopPosing()
     {
         Locator.Instance.StatesOfPlayer.GetSetPlayerState = PlayerStates.StatesOfPlayer.Idle;
-        _playerMovement.enabled = true;
+        _abilityInUse = false;
         // reset list after to not have old combination data
         _abilityCombo = new List<KeyCode>();
         _playerSprite.sprite = _sprites[0];
