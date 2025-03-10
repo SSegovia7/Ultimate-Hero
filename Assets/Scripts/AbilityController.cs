@@ -88,6 +88,7 @@ public class AbilityController : MonoBehaviour
         }
         if(_abilityCalled == "Left Slide Kick Ability" || _abilityCalled == "Right Slide Kick Ability")
         {
+            // value represents amount of energy needed to call said abilty
             if(_poseMeter.GetPoseValue() < 20)
             {
                 Debug.Log($"Not enough energy for {_abilityCalled}!");
@@ -96,6 +97,7 @@ public class AbilityController : MonoBehaviour
         }
         if(_abilityCalled == "Push Back Ability")
         {
+            // value represents amount of energy needed to call said ability
             if(_poseMeter.GetPoseValue() < 50)
             {
                 Debug.Log($"Not enought energy for {_abilityCalled}!");
@@ -155,6 +157,7 @@ public class AbilityController : MonoBehaviour
     private void TurnOff2ndAbilityHitbox()
     {
         _playerSecondAbilityHitBox.enabled = false;
+        _poseMeter.IncreasePose(-50);
         _playerMovement.enabled = true;
         _secondAbilitySprite.SetActive(false);
     }
@@ -234,6 +237,7 @@ public class AbilityController : MonoBehaviour
         Physics2D.IgnoreLayerCollision(6,7, false);
         // turn on hitbox
         _playerFirstAbilityHitBox.gameObject.SetActive(true);
+        _poseMeter.IncreasePose(-20);
         // turn off hitbox
         Invoke("TurnOffFirstAbilityHitbox", 2);
     }

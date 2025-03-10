@@ -28,7 +28,7 @@ public class CombatTester : MonoBehaviour
     private float punchDurationTimer;
 
     public bool isPunching = false;
-    
+    Pose playerEnergy;
 
     PlayerInput input;
     Controls controls = new Controls();
@@ -43,9 +43,8 @@ public class CombatTester : MonoBehaviour
         contactFilter2D.SetLayerMask(enemyLayer);
     }
     void Start()
-    {
-        _abilitiesDamage.Add(75);
-        _abilitiesDamage.Add(10);
+    {   
+        playerEnergy = this.GetComponent<Pose>();
     }
     // Update is called once per frame
     void Update()
@@ -77,7 +76,10 @@ public class CombatTester : MonoBehaviour
                         StartCoroutine(colorChangeCoroutine);
                     }
                     Health enemy_health = col.GetComponent<Health>(); //damaging enemy and updating health
+                    
                     enemy_health.TakeDamage(punch_damage);
+                    playerEnergy.IncreasePose(5);
+
                 }
             }
         }
