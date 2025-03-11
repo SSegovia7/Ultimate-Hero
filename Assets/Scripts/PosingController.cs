@@ -18,8 +18,9 @@ public class PosingController : MonoBehaviour
     // not this below
     private Rigidbody2D _playerRigidbody;
     private bool _abilityInUse;
-    
-    
+    [SerializeField] private Animator animator;
+
+
     private UnityEngine.Vector2 _zeroVector;
     [SerializeField] private float _injuredTimer;
     [SerializeField] private Sprite[] _sprites;
@@ -73,6 +74,7 @@ public class PosingController : MonoBehaviour
         // player press E to hold pose
         if(Input.GetKeyDown(KeyCode.E) && Locator.Instance.StatesOfPlayer.GetSetPlayerState != PlayerStates.StatesOfPlayer.Posing)
         {
+            _playerSprite.sprite = _sprites[5];
             PlayerIsPosing();
         }
 
