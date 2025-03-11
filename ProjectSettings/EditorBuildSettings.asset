@@ -12,6 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Cutscene.unity
     guid: 9d3dc87d1f7c0284c8bbda81f51ab12d
   - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Playtest.unity
     guid: 3ffaefb80df2dd54abf4e808c3c10f02
   - enabled: 1
@@ -20,4 +21,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Canon Event.unity
     guid: bb40d94861bfff44d8396f6718d8d9e3
+  - enabled: 0
+    path: Assets/Scenes/Aaron's test.unity
+    guid: 15febf490f54d584da035377877992fe
+  - enabled: 1
+    path: Assets/Scenes/Level.unity
+    guid: 8389e24b10c4fab49adc253eb873b4ac
   m_configObjects: {}
