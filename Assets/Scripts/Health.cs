@@ -38,6 +38,10 @@ public class Health : MonoBehaviour
         }
 
         if (currentHealth <= 0 && isLiving == true){
+            if(this.gameObject.name == "Player Character")
+            {
+                mainMenu.GoToLoseScreen();
+            }
             Die();
         }
     }
@@ -61,7 +65,7 @@ public class Health : MonoBehaviour
         player.GetComponent<Pose>().IncreasePose(PoseOnDeath); //PLAYER POSE BAR IS INCREASE ON ENEMY DEATH
         Invoke("Revive", 2.0f); //GAMEOBJECT IS REVIVED / VISIBLE / VALUES RESET
         onDie.Invoke();
-        mainMenu.GoToLoseScreen();
+        
     }
 
     public void Revive() //CHECK GAME OBJECT TAG IN INSPECTOR ---NEEDS TO BE SET TO PLAYER OR ENEMEY
