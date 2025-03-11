@@ -56,9 +56,9 @@ public class CharacterMovement : MonoBehaviour
         controls = input.GetInput();
         if (controls.JumpState && currentJumps < possibleJumps & combatTester.isPunching == false)
         {
-            Locator.Instance.StatesOfPlayer.GetSetPlayerState = PlayerStates.StatesOfPlayer.Jumping;
-            Debug.Log("Jumping");
-            jump = true;
+           // Locator.Instance.StatesOfPlayer.GetSetPlayerState = PlayerStates.StatesOfPlayer.Jumping;
+            //Debug.Log("Jumping");
+            //jump = true;
         }
     }
 

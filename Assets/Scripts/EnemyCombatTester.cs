@@ -30,10 +30,16 @@ public class EnemyCombatTester : MonoBehaviour
     public List<Collider2D> cols = new List<Collider2D>();
 
     [SerializeField] public int punch_damage = 20;
-    
+
+    // Audio stuff to add on every script
+    AudioManager audioManager;
+   
+
     private void Awake()
     {
         contactFilter2D.SetLayerMask(playerLayer);
+        // Audio stuff to add on every script
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
     // Update is called once per frame
@@ -64,6 +70,8 @@ public class EnemyCombatTester : MonoBehaviour
                     Health playerHealth = col.gameObject.GetComponentInParent<Health>();
                     if (playerHealth)
                     {
+                        // Audio clip implementation
+                        audioManager.PlaySFX(audioManager.playerDamaged);
                         Debug.Log("hit player");
                         playerHealth.TakeDamage(attackDamage);
                     }

@@ -209,7 +209,7 @@ GameObject:
   - component: {fileID: 34045363}
   m_Layer: 6
   m_Name: Base/ Shadow
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6867,6 +6867,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 777110141617013234, guid: 40d3e549064dd5f459fe46a739d43616, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2568438983861402141, guid: 40d3e549064dd5f459fe46a739d43616, type: 3}
       propertyPath: healthBar
       value: 
