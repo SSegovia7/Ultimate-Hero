@@ -29,6 +29,13 @@ public class AbilityController : MonoBehaviour
     private SpriteRenderer _playerSprite;
     [SerializeField] public Sprite[] _sprites;
 
+    // Audio stuff to add on every script
+    AudioManager audioManager;
+    // Audio stuff to add on every script
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
 
 
     void Start()
@@ -144,6 +151,8 @@ public class AbilityController : MonoBehaviour
     ////////////////////////////////////// Abilities ///////////////////////////////////////////////////
     private void PushBackAbility()
     {
+        // Audio clip implementation
+        audioManager.PlaySFX(audioManager.whoosh);
         _playerSprite.sprite = _sprites[1];
         // enable hitbox and then have the value scale up to 5 and then revert and disable
         _playerSecondAbilityHitBox.enabled = true;
@@ -169,6 +178,8 @@ public class AbilityController : MonoBehaviour
     
     private void LeftSlideKickAbility()
     {
+        // Audio clip implementation
+        audioManager.PlaySFX(audioManager.kick);
         _playerSprite.sprite = _sprites[0];
         // the direction we want to go 
         _firstAbilityForce = Vector2.left;
@@ -191,6 +202,8 @@ public class AbilityController : MonoBehaviour
 
     private void RightSlideKickAbility()
     {
+        // Audio clip implementation
+        audioManager.PlaySFX(audioManager.kick);
         _playerSprite.sprite = _sprites[0];
         _firstAbilityForce = Vector2.right;
         _isLookingRight = _playerMovement.FacingRight;

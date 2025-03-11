@@ -64,11 +64,15 @@ public class EnemyAI : MonoBehaviour
 
     private void OnDamaged()
     {
+        // Audio clip implementation
+        audioManager.PlaySFX(audioManager.enemyDamaged);
         animator.SetTrigger("Damaged");
     }
 
     private void OnDie()
     {
+        // Audio clip implementation
+        audioManager.PlaySFX(audioManager.enemyDeath);
         enemyManager.OnDeadEnemy(this);
         Destroy(gameObject);
     }
@@ -132,7 +136,7 @@ public class EnemyAI : MonoBehaviour
         if (Mathf.Abs(displacementFromPlayer.x) <= maximumMeleeDistanceX && Mathf.Abs(displacementFromPlayer.y) <= maximumMeleeDistanceY && canMove)
         {
             // Audio clip implementation
-            audioManager.PlaySFX(audioManager.enemyDeath);
+            audioManager.PlaySFX(audioManager.enemyAttack);
 
             Debug.Log("attack");
             animator.SetBool("IsMoving", false);

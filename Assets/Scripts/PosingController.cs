@@ -27,6 +27,13 @@ public class PosingController : MonoBehaviour
     [SerializeField] private Rigidbody2D _playerOtherRigidbody;
     [SerializeField] private CharacterMovement _playerMovement;
 
+    // Audio stuff to add on every script
+    AudioManager audioManager;
+    // Audio stuff to add on every script
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
 
     void Start()
     {
@@ -67,6 +74,7 @@ public class PosingController : MonoBehaviour
 
         if(Locator.Instance.StatesOfPlayer.GetSetPlayerState == PlayerStates.StatesOfPlayer.Idle)
         {
+            _playerSprite.sprite = _sprites[0];
             PlayerStopPosing();
         }
         
@@ -74,6 +82,8 @@ public class PosingController : MonoBehaviour
         // player press E to hold pose
         if(Input.GetKeyDown(KeyCode.E) && Locator.Instance.StatesOfPlayer.GetSetPlayerState != PlayerStates.StatesOfPlayer.Posing)
         {
+            // Audio clip implementation
+            audioManager.PlaySFX(audioManager.pose2);
             _playerSprite.sprite = _sprites[5];
             PlayerIsPosing();
         }
@@ -85,6 +95,8 @@ public class PosingController : MonoBehaviour
             // get all inputs of the direction arrows
             if(Input.GetKeyDown(KeyCode.RightArrow))
             {
+                // Audio clip implementation
+                audioManager.PlaySFX(audioManager.pose1);
                 // store button press in list
                 _abilityCombo.Add(KeyCode.RightArrow);
                 // change pose to right pose
@@ -92,6 +104,8 @@ public class PosingController : MonoBehaviour
             }
             if(Input.GetKeyDown(KeyCode.UpArrow))
             {
+                // Audio clip implementation
+                audioManager.PlaySFX(audioManager.pose2);
                 // store button press in list
                 _abilityCombo.Add(KeyCode.UpArrow);
                 // change pose to up pose
@@ -99,6 +113,8 @@ public class PosingController : MonoBehaviour
             }
             if(Input.GetKeyDown(KeyCode.LeftArrow))
             {
+                // Audio clip implementation
+                audioManager.PlaySFX(audioManager.pose1);
                 // store button press in list
                 _abilityCombo.Add(KeyCode.LeftArrow);
                 // change pose to left pose
@@ -106,6 +122,8 @@ public class PosingController : MonoBehaviour
             }
             if(Input.GetKeyDown(KeyCode.DownArrow))
             {
+                // Audio clip implementation
+                audioManager.PlaySFX(audioManager.pose3);
                 // store button press in list
                 _abilityCombo.Add(KeyCode.DownArrow);
                 // change pos to down pose
@@ -118,10 +136,13 @@ public class PosingController : MonoBehaviour
         {
             if(AbilityUsed(_abilityCombo))
             {
+                // Audio clip implementation
+                audioManager.PlaySFX(audioManager.poseChime);
                 _abilityInUse = true;
             }
             else
             {
+                _playerSprite.sprite = _sprites[0];
                 PlayerStopPosing();
                 _playerMovement.enabled = true;
             }
@@ -146,6 +167,7 @@ public class PosingController : MonoBehaviour
         _injuredTimer -= Time.deltaTime;
         if(_injuredTimer <= 0)
         {
+            _playerSprite.sprite = _sprites[0];
             PlayerStopPosing();
             _injuredTimer = 3f;
             return;
@@ -160,7 +182,7 @@ public class PosingController : MonoBehaviour
         _abilityInUse = false;
         // reset list after to not have old combination data
         _abilityCombo = new List<KeyCode>();
-        _playerSprite.sprite = _sprites[0];
+        //_playerSprite.sprite = _sprites[0];
         return;
     }
 }

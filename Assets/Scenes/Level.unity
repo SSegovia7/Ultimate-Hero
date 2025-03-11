@@ -153,7 +153,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicSource: {fileID: 0}
   SFXSource: {fileID: 562335467}
-  enemyDeath: {fileID: 8300000, guid: 70d29fa7283878e47afcd684b1e45d7c, type: 3}
+  enemyAttack: {fileID: 8300000, guid: 70d29fa7283878e47afcd684b1e45d7c, type: 3}
+  enemyDamaged: {fileID: 8300000, guid: 1da5e75e73e80034d8ee7fe7b2614992, type: 3}
+  enemyDeath: {fileID: 8300000, guid: 0df842a55a2776f43968b8971ed9429d, type: 3}
+  playerDamaged: {fileID: 8300000, guid: 9ece572f2f4f937449915ab1f30dcc59, type: 3}
+  playerDeath: {fileID: 8300000, guid: 121c8939ffd95774ba7bb4abf880b88d, type: 3}
+  playerPunch: {fileID: 8300000, guid: 9af086ca09b89bf41aff6b50370e0b9c, type: 3}
+  pose1: {fileID: 8300000, guid: 946799de1f0d0484685d6a8dba2ab9ca, type: 3}
+  pose2: {fileID: 8300000, guid: b00d1b656a1ffb54d94ffc524ed3ef46, type: 3}
+  pose3: {fileID: 8300000, guid: 22953abc3bffc9241a858577c782c49e, type: 3}
+  poseChime: {fileID: 8300000, guid: f7fa68d57ab15ca4c852c236e3eaf687, type: 3}
+  slash: {fileID: 8300000, guid: 7f6c862ebdda1004c98c1b5cfe75a91d, type: 3}
+  whoosh: {fileID: 8300000, guid: 37f8bbcaea331fc45a224db6990fb26c, type: 3}
+  kick: {fileID: 8300000, guid: 78ce364c9e1d46f4f97e0cd7f66c7c8b, type: 3}
 --- !u!4 &24624771
 Transform:
   m_ObjectHideFlags: 0
@@ -1212,6 +1224,7 @@ MonoBehaviour:
   isPunching: 0
   cols: []
   punch_damage: 20
+  _sprites: []
 --- !u!114 &380803811
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1361,6 +1374,7 @@ GameObject:
   - component: {fileID: 382234447}
   - component: {fileID: 382234446}
   - component: {fileID: 382234445}
+  - component: {fileID: 382234456}
   m_Layer: 6
   m_Name: Player Character
   m_TagString: Player
@@ -1466,7 +1480,7 @@ MonoBehaviour:
   - {fileID: 672194003, guid: 68cb9b41e6aa63848bb4015872fc07c1, type: 3}
   - {fileID: 21300000, guid: 129ec2d222b48814a815cf4ce730b375, type: 3}
   - {fileID: 21300000, guid: 523ab7f1946ea6b42ba2b2954502334d, type: 3}
-  - {fileID: 21300000, guid: 4594928c4058a62418c3c88dee0d34f0, type: 3}
+  - {fileID: 21300000, guid: 5de5178232a530e489e3680b91ad1d09, type: 3}
   - {fileID: 21300000, guid: 661e463412ac53640ad739d076677143, type: 3}
   - {fileID: 21300000, guid: cd7bd55d00fbf044d9608cf5fb37a7ca, type: 3}
   _playerOtherRigidbody: {fileID: 1161932209}
@@ -1512,6 +1526,8 @@ MonoBehaviour:
   isPunching: 0
   cols: []
   punch_damage: 20
+  _sprites:
+  - {fileID: 21300000, guid: b5efc2138a7059645991afb9d6ec015a, type: 3}
 --- !u!114 &382234452
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1606,6 +1622,27 @@ Transform:
   - {fileID: 1441238801}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &382234456
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 382234444}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9da41f3800c0c7b468118c04f00b26da, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &412995841
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2135,7 +2172,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.813
+  m_Volume: 0.6
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2228,7 +2265,7 @@ Transform:
   m_GameObject: {fileID: 562335466}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -1.99, y: 7.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

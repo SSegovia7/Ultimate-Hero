@@ -20,6 +20,14 @@ public class Health : MonoBehaviour
 
     public bool isLiving = true;
 
+    // Audio stuff to add on every script
+    AudioManager audioManager;
+    // Audio stuff to add on every script
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
+
     void Start()
     {
         mainMenu = new MainMenu();
@@ -34,6 +42,8 @@ public class Health : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.P))
         {
+            // Audio clip implementation
+            audioManager.PlaySFX(audioManager.playerDamaged);
             TakeDamage(20);
         }
 
@@ -61,6 +71,8 @@ public class Health : MonoBehaviour
     
     public void Die()
     {
+        // Audio clip implementation
+        //audioManager.PlaySFX(audioManager.playerDeath);
         Revive(); //GAMEOBJECT DIES / TURNS INVISIBLE
         player.GetComponent<Pose>().IncreasePose(PoseOnDeath); //PLAYER POSE BAR IS INCREASE ON ENEMY DEATH
         Invoke("Revive", 2.0f); //GAMEOBJECT IS REVIVED / VISIBLE / VALUES RESET

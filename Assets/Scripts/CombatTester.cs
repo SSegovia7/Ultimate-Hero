@@ -36,14 +36,23 @@ public class CombatTester : MonoBehaviour
     public List<Collider2D> cols = new List<Collider2D>();
 
     [SerializeField] public int punch_damage = 20;
-    
+
+    private SpriteRenderer _playerSprite;
+    [SerializeField] public Sprite[] _sprites;
+
+    // Audio stuff to add on every script
+    AudioManager audioManager;
+
     private void Awake()
     {
         input = GetComponent<PlayerInput>();
         contactFilter2D.SetLayerMask(enemyLayer);
+        // Audio stuff to add on every script
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
     void Start()
-    {   
+    {
+        _playerSprite = this.GetComponentInChildren<SpriteRenderer>();
         playerEnergy = this.GetComponent<Pose>();
     }
     // Update is called once per frame
@@ -57,6 +66,8 @@ public class CombatTester : MonoBehaviour
         controls = input.GetInput();
         if (controls.AttackState & punchCooldownTimer == 0)
         {
+            // Audio clip implementation
+            audioManager.PlaySFX(audioManager.playerPunch);
             Debug.Log("Punching");
             punchCooldownTimer = punchCooldown;
             punchDurationTimer = punchDuration;
@@ -68,6 +79,7 @@ public class CombatTester : MonoBehaviour
             {
                 foreach (var col in cols)
                 {
+                    _playerSprite.sprite = _sprites[0];
                     print($"You attacked: {col.transform.name}");
                     if (col.TryGetComponent(out SpriteRenderer sr))
                     {
@@ -103,12 +115,13 @@ public class CombatTester : MonoBehaviour
             punchDurationTimer = 0;
             isPunching = false;
             attackSprite.SetActive(false);
+            _playerSprite.sprite = _sprites[1];
         }
 
     }
 
-    // this should not be public - change later
-    public void AbilityAttack(int abilityNumber)
+// this should not be public - change later
+public void AbilityAttack(int abilityNumber)
     {
         _abilityInLineCollider[abilityNumber].OverlapCollider(contactFilter2D,cols);
         if(cols.Count > 0)
@@ -119,14 +132,22 @@ public class CombatTester : MonoBehaviour
                 if(abilityNumber == 0)
                 {
                     col.gameObject.TryGetComponent<Health>(out Health enemyHealth);
-                    if(enemyHealth != null)
+                    if (enemyHealth != null)
+                    {
+                        // Audio clip implementation
+                        audioManager.PlaySFX(audioManager.slash);
                         enemyHealth.EnemyDamaged(_secondAbilityDamage);
+                    }
                 }
                 if(abilityNumber == 1)
                 {
                     col.gameObject.TryGetComponent<Health>(out Health enemyHealth);
-                    if(enemyHealth != null)
+                    if (enemyHealth != null)
+                    {
+                        // Audio clip implementation
+                        audioManager.PlaySFX(audioManager.slash);
                         enemyHealth.EnemyDamaged(_firstAbilityDamage);
+                    }
                 }
                 if (col.TryGetComponent(out SpriteRenderer sr))
                 {
