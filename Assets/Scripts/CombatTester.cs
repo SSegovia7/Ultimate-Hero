@@ -78,7 +78,7 @@ public class CombatTester : MonoBehaviour
                     Health enemy_health = col.GetComponent<Health>(); //damaging enemy and updating health
                     
                     enemy_health.TakeDamage(punch_damage);
-                    playerEnergy.IncreasePose(5);
+                    playerEnergy.IncreasePose(10);
 
                 }
             }
