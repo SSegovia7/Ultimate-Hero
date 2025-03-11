@@ -28,6 +28,12 @@ public class EnemyAI : MonoBehaviour
     public Vector3 displacementFromPlayer;
     public bool canMove = true;
     public bool isAttacking = false;
+    AudioManager audioManager;
+
+    private void Awake()
+    {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -123,6 +129,7 @@ public class EnemyAI : MonoBehaviour
         // if close enough to and in line with player, attack
         if (Mathf.Abs(displacementFromPlayer.x) <= maximumMeleeDistanceX && Mathf.Abs(displacementFromPlayer.y) <= maximumMeleeDistanceY && canMove)
         {
+            audioManager.PlaySFX(audioManager.enemyDeath);
             Debug.Log("attack");
             animator.SetBool("IsMoving", false);
             animator.SetTrigger("BasicAttack");
