@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityName: Left Slide Kick Ability
   keycodeCombinations: 12010000110100001301000014010000
+  abilityDamage: 10
+  abilityCost: 20

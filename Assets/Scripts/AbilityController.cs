@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using System.Linq;
 
@@ -9,39 +8,47 @@ public class AbilityController : MonoBehaviour
 {
     // list of available abilities in the game
     [SerializeField] private List<Ability> _playerAbilitiesList;
-    [SerializeField] private BoxCollider2D _playerAbilityHitBox;
+    [SerializeField] private BoxCollider2D _playerSecondAbilityHitBox;
+    [SerializeField] private BoxCollider2D _playerFirstAbilityHitBox;
+    [SerializeField] private Rigidbody2D _playerRigidBody;
     // replace 
     [SerializeField] private GameObject _secondAbilitySprite;
-
-    // 
     [SerializeField] private float _secondAbilityTimeOut;
-    
+    [SerializeField] private float _firstAbilityMagnitude;
+    [SerializeField] private float _firstAbilityDistanceTimer;
+    [SerializeField] private CharacterMovement _playerMovement;
+    [SerializeField] private Pose _poseMeter;
+    private Vector2 _firstAbilityForce;
     private List<string> _abilityNames;
     private Dictionary<string, List<KeyCode>> _playerAbilities;
     private string _abilityCalled;
-    private BoxCollider2D _hitboxTemp;
-    private bool isValid;
+    private bool _isValid;
+    private bool _isLookingRight;
+    private float timer;
+    private IEnumerator coroutine;
+
    
 
     void Start()
     {
         // list to hold the ability names 
         _abilityNames = new List<string>();
+        _firstAbilityForce = Vector2.left;
         // dictionary to hold the correct input combinations, can be acquired by their names
         _playerAbilities = new Dictionary<string, List<KeyCode>>();
         // basic intializer of string variable
         _abilityCalled = "";
-        _hitboxTemp = _playerAbilityHitBox;
         // tie method to event in posingcontroller
         Locator.Instance.PosingControll.AbilityUsed += HandlePlayerAbility;
         // store data from Ability list into dictionary and name list
         StoreAbilitiesData();
+        timer = 0;
     }
 
 
     void Update()
     {
-
+        //timer += Time.deltaTime;
     }
 
     /// <summary>
@@ -59,7 +66,6 @@ public class AbilityController : MonoBehaviour
         return false; 
     }
 
-// broken
     public bool IsValidCombo(List<KeyCode> playerInput)
     {
         foreach(string abilityName in _abilityNames)
@@ -68,21 +74,39 @@ public class AbilityController : MonoBehaviour
             {
                 if(playerInput.SequenceEqual(abilityCombo))
                 {
-                    isValid = true;
+                    _isValid = true;
                     _abilityCalled = abilityName;
                     break;
                 }
                 else
                 {
-                    isValid = false;
+                    _isValid = false;
                     _abilityCalled = "";
+                    Locator.Instance.StatesOfPlayer.GetSetPlayerState = PlayerStates.StatesOfPlayer.Idle;
                 }
             }
         }
-        
-        return isValid;
-    }
+        if(_abilityCalled == "Left Slide Kick Ability" || _abilityCalled == "Right Slide Kick Ability")
+        {
+            // value represents amount of energy needed to call said abilty
+            if(_poseMeter.GetPoseValue() < 20)
+            {
+                Debug.Log($"Not enough energy for {_abilityCalled}!");
+                return false;
+            }
+        }
+        if(_abilityCalled == "Push Back Ability")
+        {
+            // value represents amount of energy needed to call said ability
+            if(_poseMeter.GetPoseValue() < 50)
+            {
+                Debug.Log($"Not enought energy for {_abilityCalled}!");
+                return false;
+            }
+        }
 
+        return _isValid;
+    }
 
     private void CallAbility()
     {
@@ -113,39 +137,120 @@ public class AbilityController : MonoBehaviour
         }
     }
 
-    // Abilities
+
+    ////////////////////////////////////// Abilities ///////////////////////////////////////////////////
     private void PushBackAbility()
     {
         // enable hitbox and then have the value scale up to 5 and then revert and disable
-        _playerAbilityHitBox.enabled = true;
-        Locator.Instance.CombatControl.AbilityAttack();
+        _playerSecondAbilityHitBox.enabled = true;
+        // call ability attack for second ability
+        Locator.Instance.CombatControl.AbilityAttack(0);
+        // turn on sprite effect
         _secondAbilitySprite.SetActive(true);
+        // turn off player movement
+        _playerMovement.enabled = false;
         // need a timer to wait here: one second
-        Invoke("TurnOffHitbox", _secondAbilityTimeOut);
-        
-
-        // also need to have image move alongside with hitbox as it changes scale values
-          
+        Invoke("TurnOff2ndAbilityHitbox", _secondAbilityTimeOut);
     }
 
 
-    private void TurnOffHitbox()
+    private void TurnOff2ndAbilityHitbox()
     {
-        // 
-        _playerAbilityHitBox.size = _hitboxTemp.size;
-        _playerAbilityHitBox.enabled = false;
+        _playerSecondAbilityHitBox.enabled = false;
+        _poseMeter.IncreasePose(-50);
+        _playerMovement.enabled = true;
         _secondAbilitySprite.SetActive(false);
     }
 
     
     private void LeftSlideKickAbility()
     {
-        Debug.Log("LeftSlide");
+        // the direction we want to go 
+        _firstAbilityForce = Vector2.left;
+        // check direction player is facing 
+        _isLookingRight = _playerMovement.FacingRight;
+        // if looking right turn left
+        if(_isLookingRight)
+            Flip();
+        // turn off movement
+        _playerMovement.enabled = false;
+        // get coroutine
+        coroutine = Func();
+        // do coroutine
+        StartCoroutine(coroutine);
+        // then flip back to original direction
+        if(_isLookingRight)
+            Invoke("Flip", 2.5f);
     }
 
 
     private void RightSlideKickAbility()
     {
-        Debug.Log("RightSide");
+        _firstAbilityForce = Vector2.right;
+        _isLookingRight = _playerMovement.FacingRight;
+        if(!_isLookingRight)
+            Flip();
+        _playerMovement.enabled = false;
+        coroutine = Func();
+        StartCoroutine(coroutine);
+        if(!_isLookingRight)
+            Invoke("Flip", 2.5f);
+    }
+
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        // if thing is enemy
+        if(collision.gameObject.tag == "Enemy")
+        {
+            // do ability attack method from combat tester class for first ability
+            Locator.Instance.CombatControl.AbilityAttack(1);
+            //Debug.Log($"{timer}");
+        }
+    }
+
+
+    private void Flip()
+    {
+        this.transform.Rotate(0,180,0);
+    }
+
+
+    private void TurnOffFirstAbilityHitbox()
+    {
+        _playerMovement.enabled = true;
+        _playerFirstAbilityHitBox.gameObject.SetActive(false);
+    }
+
+
+    private IEnumerator Func()
+    {
+        // ignore enemy layer when slide starts so that player doesn't bounce off enemy
+        Physics2D.IgnoreLayerCollision(6,7, true);
+        // slide
+        _playerRigidBody.AddForce(_firstAbilityForce * _firstAbilityMagnitude);
+        // wait
+        yield return new WaitForSeconds(_firstAbilityDistanceTimer);
+        // stop slide
+        _playerRigidBody.AddForce(-_firstAbilityForce * _firstAbilityMagnitude);
+        // stop ignore enemy layer
+        Physics2D.IgnoreLayerCollision(6,7, false);
+        // turn on hitbox
+        _playerFirstAbilityHitBox.gameObject.SetActive(true);
+        _poseMeter.IncreasePose(-20);
+        // turn off hitbox
+        Invoke("TurnOffFirstAbilityHitbox", 2);
+    }
+
+
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        timer = 0; 
+        
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        timer = 0; 
     }
 }

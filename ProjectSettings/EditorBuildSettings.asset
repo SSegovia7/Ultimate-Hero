@@ -14,4 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Playtest.unity
     guid: 3ffaefb80df2dd54abf4e808c3c10f02
+  - enabled: 1
+    path: Assets/Scenes/Lose Screen.unity
+    guid: 1567c16a8156c5543a066f0ff11a5de4
+  - enabled: 1
+    path: Assets/Scenes/Canon Event.unity
+    guid: bb40d94861bfff44d8396f6718d8d9e3
   m_configObjects: {}
