@@ -6842,14 +6842,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy (2)
       objectReference: {fileID: 0}
-    - target: {fileID: 4847340797474179513, guid: 40d3e549064dd5f459fe46a739d43616, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4847340797474179513, guid: 40d3e549064dd5f459fe46a739d43616, type: 3}
-      propertyPath: m_TagString
-      value: Enemy
-      objectReference: {fileID: 0}
     - target: {fileID: 7001450530759304118, guid: 40d3e549064dd5f459fe46a739d43616, type: 3}
       propertyPath: m_LocalPosition.x
       value: -14.39
@@ -6889,10 +6881,6 @@ PrefabInstance:
     - target: {fileID: 7001450530759304118, guid: 40d3e549064dd5f459fe46a739d43616, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7600861651575417399, guid: 40d3e549064dd5f459fe46a739d43616, type: 3}
-      propertyPath: proximityRadius
-      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
