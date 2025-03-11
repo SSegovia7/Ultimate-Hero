@@ -694,7 +694,7 @@ SpriteRenderer:
   m_SortingLayerID: 630944269
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1663063153, guid: b865354fac5ce9948a5b5dda9311bbd9, type: 3}
+  m_Sprite: {fileID: 486873902, guid: 25bdda5092c0442468bf4f2ee0560766, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -862,12 +862,12 @@ SpriteRenderer:
   m_SortingLayerID: 630944269
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1663063153, guid: b865354fac5ce9948a5b5dda9311bbd9, type: 3}
+  m_Sprite: {fileID: -1073616881, guid: 25bdda5092c0442468bf4f2ee0560766, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.13, y: 0.12}
+  m_Size: {x: 2.5, y: 2.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -1820,12 +1820,12 @@ SpriteRenderer:
   m_SortingLayerID: 630944269
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1663063153, guid: b865354fac5ce9948a5b5dda9311bbd9, type: 3}
+  m_Sprite: {fileID: -1073616881, guid: 25bdda5092c0442468bf4f2ee0560766, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.13, y: 0.12}
+  m_Size: {x: 2.5, y: 2.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -2437,7 +2437,7 @@ SpriteRenderer:
   m_SortingLayerID: 630944269
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1663063153, guid: b865354fac5ce9948a5b5dda9311bbd9, type: 3}
+  m_Sprite: {fileID: 486873902, guid: 25bdda5092c0442468bf4f2ee0560766, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2530,27 +2530,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6227497599759919025, guid: 221b5b2b7fc35bb4a8799971e9623477, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.5
+      value: 0.16947916
       objectReference: {fileID: 0}
     - target: {fileID: 6227497599759919025, guid: 221b5b2b7fc35bb4a8799971e9623477, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6227497599759919025, guid: 221b5b2b7fc35bb4a8799971e9623477, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6227497599759919025, guid: 221b5b2b7fc35bb4a8799971e9623477, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.5
+      value: 0.9414074
       objectReference: {fileID: 0}
     - target: {fileID: 6227497599759919025, guid: 221b5b2b7fc35bb4a8799971e9623477, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 326.4447
+      value: 0.44470215
       objectReference: {fileID: 0}
     - target: {fileID: 6227497599759919025, guid: 221b5b2b7fc35bb4a8799971e9623477, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 60.094
+      value: -2.9060059
       objectReference: {fileID: 0}
     - target: {fileID: 6227497599759919025, guid: 221b5b2b7fc35bb4a8799971e9623477, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2582,11 +2582,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6227497599759919025, guid: 221b5b2b7fc35bb4a8799971e9623477, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -196
+      value: 0.22235107
       objectReference: {fileID: 0}
     - target: {fileID: 6227497599759919025, guid: 221b5b2b7fc35bb4a8799971e9623477, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 292
+      value: 1.4530029
       objectReference: {fileID: 0}
     - target: {fileID: 6227497599759919025, guid: 221b5b2b7fc35bb4a8799971e9623477, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -3308,7 +3308,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db60b4bc0cb06f1488fdd7fdbd81e4e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetTransform: {fileID: 380803814}
+  targetTransform: {fileID: 382234455}
   maxDistanceFromCenter: 4
   leftLimit: -9
   rightLimit: 9
@@ -3966,27 +3966,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6227497599759919025, guid: 221b5b2b7fc35bb4a8799971e9623477, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.5
+      value: 0.16947916
       objectReference: {fileID: 0}
     - target: {fileID: 6227497599759919025, guid: 221b5b2b7fc35bb4a8799971e9623477, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0.5
+      value: 0.90300006
       objectReference: {fileID: 0}
     - target: {fileID: 6227497599759919025, guid: 221b5b2b7fc35bb4a8799971e9623477, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6227497599759919025, guid: 221b5b2b7fc35bb4a8799971e9623477, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.5
+      value: 0.8464073
       objectReference: {fileID: 0}
     - target: {fileID: 6227497599759919025, guid: 221b5b2b7fc35bb4a8799971e9623477, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 326.4447
+      value: -0.55529785
       objectReference: {fileID: 0}
     - target: {fileID: 6227497599759919025, guid: 221b5b2b7fc35bb4a8799971e9623477, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 60.094
+      value: -0.90600586
       objectReference: {fileID: 0}
     - target: {fileID: 6227497599759919025, guid: 221b5b2b7fc35bb4a8799971e9623477, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4018,11 +4018,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6227497599759919025, guid: 221b5b2b7fc35bb4a8799971e9623477, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -197
+      value: -0.27770996
       objectReference: {fileID: 0}
     - target: {fileID: 6227497599759919025, guid: 221b5b2b7fc35bb4a8799971e9623477, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 218
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6227497599759919025, guid: 221b5b2b7fc35bb4a8799971e9623477, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -5521,7 +5521,7 @@ SpriteRenderer:
   m_SortingLayerID: 630944269
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1663063153, guid: b865354fac5ce9948a5b5dda9311bbd9, type: 3}
+  m_Sprite: {fileID: 486873902, guid: 25bdda5092c0442468bf4f2ee0560766, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
