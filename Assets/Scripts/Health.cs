@@ -12,6 +12,7 @@ public class Health : MonoBehaviour
     public HealthBar healthBar;
     public UnityEvent onDie = new UnityEvent();
     public UnityEvent onDamaged = new UnityEvent();
+    MainMenu mainMenu;
 
     public int PoseOnDeath = 20;
 
@@ -21,6 +22,7 @@ public class Health : MonoBehaviour
 
     void Start()
     {
+        mainMenu = new MainMenu();
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
         player = GameObject.Find("Player Character"); //Finding player GO using strintg "Player Character" if err check name
@@ -59,6 +61,7 @@ public class Health : MonoBehaviour
         player.GetComponent<Pose>().IncreasePose(PoseOnDeath);
         Invoke("Revive", 2.0f); //GAMEOBJECT IS REVIVED / VISIBLE / VALUES RESET
         onDie.Invoke();
+        mainMenu.GoToLoseScreen();
     }
 
     public void Revive() //CHECK GAME OBJECT TAG IN INSPECTOR ---NEEDS TO BE SET TO PLAYER OR ENEMEY
