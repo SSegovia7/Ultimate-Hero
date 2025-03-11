@@ -138,7 +138,7 @@ GameObject:
   - component: {fileID: 397748521374859704}
   m_Layer: 7
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -267,6 +267,7 @@ MonoBehaviour:
   onDamaged:
     m_PersistentCalls:
       m_Calls: []
+  PoseOnDeath: 20
   isLiving: 1
 --- !u!95 &5222016428579717575
 Animator:

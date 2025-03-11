@@ -26,11 +26,14 @@ public class AbilityController : MonoBehaviour
     private bool _isLookingRight;
     private float timer;
     private IEnumerator coroutine;
+    private SpriteRenderer _playerSprite;
+    [SerializeField] public Sprite[] _sprites;
 
-   
+
 
     void Start()
     {
+        _playerSprite = this.GetComponentInChildren<SpriteRenderer>();
         // list to hold the ability names 
         _abilityNames = new List<string>();
         _firstAbilityForce = Vector2.left;
@@ -141,6 +144,7 @@ public class AbilityController : MonoBehaviour
     ////////////////////////////////////// Abilities ///////////////////////////////////////////////////
     private void PushBackAbility()
     {
+        _playerSprite.sprite = _sprites[1];
         // enable hitbox and then have the value scale up to 5 and then revert and disable
         _playerSecondAbilityHitBox.enabled = true;
         // call ability attack for second ability
@@ -165,6 +169,7 @@ public class AbilityController : MonoBehaviour
     
     private void LeftSlideKickAbility()
     {
+        _playerSprite.sprite = _sprites[0];
         // the direction we want to go 
         _firstAbilityForce = Vector2.left;
         // check direction player is facing 
@@ -186,6 +191,7 @@ public class AbilityController : MonoBehaviour
 
     private void RightSlideKickAbility()
     {
+        _playerSprite.sprite = _sprites[0];
         _firstAbilityForce = Vector2.right;
         _isLookingRight = _playerMovement.FacingRight;
         if(!_isLookingRight)
